@@ -50,9 +50,32 @@ pipeline {
                         )
                          
                         echo All repository files found, starting deployment...
-                        echo Deploying with control port: ${params.CONTROL_PORT}
-                        npx e2e-bridge-cli deploy repository/BuilderUML/regtestlatest.rep -h ${params.BRIDGE_HOST} -u ${params.BRIDGE_USER} -P ${params.BRIDGE_PASSWORD} -p ${params.CONTROL_PORT} -o overwrite
+                        echo Deploying to bridge host: ${params.BRIDGE_HOST}
+                        npx e2e-bridge-cli deploy repository/BuilderUML/regtestlatest.rep -h ${params.BRIDGE_HOST} -u ${params.BRIDGE_USER} -P ${params.BRIDGE_PASSWORD} -o overwrite
                         
+                    """
+                }
+            }
+        }
+        stage('Start Bridge Server') {
+            steps {
+                dir('.') {
+                    bat """
+                        echo Starting bridge server on control port: ${params.CONTROL_PORT}
+                        echo Checking if bridge server is already running...
+                        
+                        if exist ".$bin\\BuilderUML.regtestlatest.regtestlatest\\server.pid" (
+                            echo Bridge server appears to be running, checking status...
+                        ) else (
+                            echo Starting bridge server...
+                            cd ".$bin\\BuilderUML.regtestlatest.regtestlatest"
+                            call bin\\start.bat
+                            echo Bridge server startup initiated
+                        )
+                        
+                        echo Waiting for bridge server to be ready...
+                        timeout /t 10 /nobreak > nul
+                        echo Bridge server should now be running on control port: ${params.CONTROL_PORT}
                     """
                 }
             }
