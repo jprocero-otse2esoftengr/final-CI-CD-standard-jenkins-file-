@@ -23,6 +23,7 @@ pipeline {
         string(name: 'BRIDGE_USER', defaultValue: 'jprocero', description: 'Bridge username')
         password(name: 'BRIDGE_PASSWORD', defaultValue: 'jprocero', description: 'Bridge password')
         string(name: 'BRIDGE_PORT', defaultValue: '11165', description: 'Bridge port')
+        string(name: 'CONTROL_PORT', defaultValue: '21176', description: 'Control port')
     }
 
 
@@ -105,6 +106,7 @@ pipeline {
                         echo - Project: .
                         echo - Host: ${BRIDGE_HOST}
                         echo - Port: ${BRIDGE_PORT}
+                        echo - Control Port: ${CONTROL_PORT}
                         echo - Username: ${BRIDGE_USER}
                         echo - Note: RegTestRunner will run all available test suites in the project
                         
