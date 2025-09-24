@@ -64,11 +64,11 @@ pipeline {
                         echo Starting bridge server on control port: ${params.CONTROL_PORT}
                         echo Checking if bridge server is already running...
                         
-                        if exist ".$bin\\BuilderUML.regtestlatest.regtestlatest\\server.pid" (
+                        if exist ".\\$bin\\BuilderUML.regtestlatest.regtestlatest\\server.pid" (
                             echo Bridge server appears to be running, checking status...
                         ) else (
                             echo Starting bridge server...
-                            cd ".$bin\\BuilderUML.regtestlatest.regtestlatest"
+                            cd ".\\$bin\\BuilderUML.regtestlatest.regtestlatest"
                             call bin\\start.bat
                             echo Bridge server startup initiated
                         )
