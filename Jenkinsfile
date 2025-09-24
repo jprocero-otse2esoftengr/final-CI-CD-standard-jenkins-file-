@@ -6,9 +6,7 @@ pipeline {
         disableConcurrentBuilds()
     }
     
-    environment {
-        // Environment variables can be added here if needed
-    }
+    // Environment variables can be added here if needed
     
     triggers {
         pollSCM('H/5 * * * *')  // Poll GitHub every 5 minutes
