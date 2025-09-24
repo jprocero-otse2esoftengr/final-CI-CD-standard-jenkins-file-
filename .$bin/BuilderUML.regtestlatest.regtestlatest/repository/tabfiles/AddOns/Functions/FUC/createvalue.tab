@@ -99,9 +99,54 @@
       <Value>4</Value>
    </Function>
    <Function>
+      <ID>value...urn:Base_Components.Add_Ons.JSON.ComposerOptions.writeTypeDiscriminator</ID>
+      <ItemType>Boolean</ItemType>
+      <Value>true</Value>
+   </Function>
+   <Function>
+      <ID>value...urn:Base_Components.Add_Ons.MongoDB.ExtendedJSONComposerOptions.writeTypeDiscriminator</ID>
+      <ItemType>Boolean</ItemType>
+      <Value>false</Value>
+   </Function>
+   <Function>
       <ID>value...urn:Base_Components.Advanced_Behavior.Meta.ActionInterceptorMessage.ignoreAction</ID>
       <ItemType>Boolean</ItemType>
       <Value>false</Value>
+   </Function>
+   <Function>
+      <ID>value...urn:Base_Components.Advanced_Behavior.Persistent_State.AndQueryCondition.conditionType</ID>
+      <ItemType>String</ItemType>
+      <Value>conjunction</Value>
+   </Function>
+   <Function>
+      <ID>value...urn:Base_Components.Advanced_Behavior.Persistent_State.ComplexQueryCondition.conditionType</ID>
+      <ItemType>String</ItemType>
+      <Value>complex</Value>
+   </Function>
+   <Function>
+      <ID>value...urn:Base_Components.Advanced_Behavior.Persistent_State.OrQueryCondition.conditionType</ID>
+      <ItemType>String</ItemType>
+      <Value>disjunction</Value>
+   </Function>
+   <Function>
+      <ID>value...urn:Base_Components.Advanced_Behavior.Persistent_State.QueryCondition.conditionType</ID>
+      <ItemType>String</ItemType>
+      <Value/>
+   </Function>
+   <Function>
+      <ID>value...urn:Base_Components.Advanced_Behavior.Persistent_State.SelectObjectsQuery.limit</ID>
+      <ItemType>Integer</ItemType>
+      <Value>1000</Value>
+   </Function>
+   <Function>
+      <ID>value...urn:Base_Components.Advanced_Behavior.Persistent_State.SimpleQueryCondition.conditionType</ID>
+      <ItemType>String</ItemType>
+      <Value>simple</Value>
+   </Function>
+   <Function>
+      <ID>value...urn:Base_Components.Advanced_Behavior.Persistent_State.SimpleQueryCondition.operator</ID>
+      <ItemType>String</ItemType>
+      <Value>=</Value>
    </Function>
    <Function>
       <ID>value...urn:Base_Components.Basic_Behavior.MIME.MIMEPart.contentType</ID>
@@ -122,5 +167,15 @@
       <ID>value...urn:Base_Components.Basic_Behavior.XML.XMLComposeOptions.encoding</ID>
       <ItemType>String</ItemType>
       <Value>UTF-8</Value>
+   </Function>
+   <Function>
+      <ID>value...getCompositeVersion</ID>
+      <ItemType>String</ItemType>
+      <Value>0.0.1</Value>
+   </Function>
+   <Function>
+      <ID>value...getCompositeCategory</ID>
+      <ItemType>String</ItemType>
+      <Value>Training2025</Value>
    </Function>
 </Functions>

@@ -26,4 +26,5 @@
    </Model>
    <Model id="E2E_BRIDGE_BASE_COMPONENTS|GEN_1065094250389_956183_167"
           name="regtestlatest"/>
+   <Model id="E2E_BRIDGE_PROFILE|GEN_1065094250389_956183_167" name="regtestlatest"/>
 </InspectionList>

@@ -107,6 +107,18 @@
              namespace="http://e2e.ch/bridge/addOns/json"/>
    <DataItem id="urn:Base_Components.Add_Ons.LDAP.LDAPEntry"
              namespace="http://e2e.ch/bridge/addOns/ldap"/>
+   <DataItem id="urn:Base_Components.Add_Ons.MongoDB.ExtendedJSONComposerOptions"
+             namespace="http://e2e.ch/bridge/addOns/mongodb"/>
+   <DataItem id="urn:Base_Components.Add_Ons.MongoDB.MongoDBFindOptions"
+             namespace="http://e2e.ch/bridge/addOns/mongodb"/>
+   <DataItem id="urn:Base_Components.Add_Ons.MongoDB.MongoDBHandle"
+             namespace="http://e2e.ch/bridge/addOns/mongodb"/>
+   <DataItem id="urn:Base_Components.Add_Ons.MongoDB.MongoDBReplaceOptions"
+             namespace="http://e2e.ch/bridge/addOns/mongodb"/>
+   <DataItem id="urn:Base_Components.Add_Ons.MongoDB.MongoDBUpdateOptions"
+             namespace="http://e2e.ch/bridge/addOns/mongodb">
+      <XMLElement index="1" xsdType="string"/>
+   </DataItem>
    <DataItem id="urn:Base_Components.Add_Ons.POP3.POP3Authentication"
              namespace="http://e2e.ch/bridge/addOns/pop3"/>
    <DataItem id="urn:Base_Components.Add_Ons.POP3.POP3Message"
@@ -221,10 +233,14 @@
              namespace="http://e2e.ch/bridge/addOns/url"/>
    <DataItem id="urn:Base_Components.Add_Ons.URL.SSL"
              namespace="http://e2e.ch/bridge/addOns/url"/>
+   <DataItem id="urn:Base_Components.Add_Ons.URL.URL"
+             namespace="http://e2e.ch/bridge/addOns/url"/>
    <DataItem id="urn:Base_Components.Add_Ons.URL.URLMessage"
              namespace="http://e2e.ch/bridge/addOns/url">
       <XMLElement index="8" xsdType="string"/>
    </DataItem>
+   <DataItem id="urn:Base_Components.Add_Ons.URL.Utilities"
+             namespace="http://e2e.ch/bridge/addOns/url"/>
    <DataItem id="urn:Base_Components.Add_Ons.XSLT.XSLTParameter"
              namespace="http://e2e.ch/bridge/addOns/xslt"/>
    <DataItem id="urn:Base_Components.Add_Ons.XSLT.XSLTParameters"
@@ -235,13 +251,51 @@
              namespace="http://e2e.ch/bridge/advancedBehavior/meta"/>
    <DataItem id="urn:Base_Components.Advanced_Behavior.Meta.Parameter"
              namespace="http://e2e.ch/bridge/advancedBehavior/meta"/>
+   <DataItem id="urn:Base_Components.Advanced_Behavior.Persistent_State.AndQueryCondition"
+             namespace="http://e2e.ch/bridge/advancedBehavior/persistentState">
+      <XMLElement index="1" namespace="http://e2e.ch/bridge/advancedBehavior/persistentState"/>
+   </DataItem>
+   <DataItem id="urn:Base_Components.Advanced_Behavior.Persistent_State.ClassAttributeMetadata"
+             namespace="http://e2e.ch/bridge/advancedBehavior/persistentState"/>
    <DataItem id="urn:Base_Components.Advanced_Behavior.Persistent_State.BPMNTask"
+             namespace="http://e2e.ch/bridge/advancedBehavior/persistentState"/>
+   <DataItem id="urn:Base_Components.Advanced_Behavior.Persistent_State.ClassCounters"
+             namespace="http://e2e.ch/bridge/advancedBehavior/persistentState"/>
+   <DataItem id="urn:Base_Components.Advanced_Behavior.Persistent_State.ClassInfo"
+             namespace="http://e2e.ch/bridge/advancedBehavior/persistentState"/>
+   <DataItem id="urn:Base_Components.Advanced_Behavior.Persistent_State.ClassMetadata"
+             namespace="http://e2e.ch/bridge/advancedBehavior/persistentState">
+      <XMLElement index="2" xsdType="string"/>
+      <XMLElement index="3" xsdType="string"/>
+      <XMLElement index="4" xsdType="string"/>
+   </DataItem>
+   <DataItem id="urn:Base_Components.Advanced_Behavior.Persistent_State.ComplexQueryCondition"
              namespace="http://e2e.ch/bridge/advancedBehavior/persistentState"/>
    <DataItem id="urn:Base_Components.Advanced_Behavior.Persistent_State.ErrorContext"
              namespace="http://e2e.ch/bridge/advancedBehavior/persistentState"/>
    <DataItem id="urn:Base_Components.Advanced_Behavior.Persistent_State.Event"
              namespace="http://e2e.ch/bridge/advancedBehavior/persistentState"/>
    <DataItem id="urn:Base_Components.Advanced_Behavior.Persistent_State.Handle"
+             namespace="http://e2e.ch/bridge/advancedBehavior/persistentState"/>
+   <DataItem id="urn:Base_Components.Advanced_Behavior.Persistent_State.ObjectEntry"
+             namespace="http://e2e.ch/bridge/advancedBehavior/persistentState">
+      <XMLElement index="4" xsdType="string"/>
+   </DataItem>
+   <DataItem id="urn:Base_Components.Advanced_Behavior.Persistent_State.OrQueryCondition"
+             namespace="http://e2e.ch/bridge/advancedBehavior/persistentState">
+      <XMLElement index="1" namespace="http://e2e.ch/bridge/advancedBehavior/persistentState"/>
+   </DataItem>
+   <DataItem id="urn:Base_Components.Advanced_Behavior.Persistent_State.Owner"
+             namespace="http://e2e.ch/bridge/advancedBehavior/persistentState"/>
+   <DataItem id="urn:Base_Components.Advanced_Behavior.Persistent_State.QueryCondition"
+             namespace="http://e2e.ch/bridge/advancedBehavior/persistentState"/>
+   <DataItem id="urn:Base_Components.Advanced_Behavior.Persistent_State.SelectObjectsQuery"
+             namespace="http://e2e.ch/bridge/advancedBehavior/persistentState">
+      <XMLElement index="8" xsdType="string"/>
+   </DataItem>
+   <DataItem id="urn:Base_Components.Advanced_Behavior.Persistent_State.SimpleQueryCondition"
+             namespace="http://e2e.ch/bridge/advancedBehavior/persistentState"/>
+   <DataItem id="urn:Base_Components.Advanced_Behavior.Persistent_State.StateCounters"
              namespace="http://e2e.ch/bridge/advancedBehavior/persistentState"/>
    <DataItem id="urn:Base_Components.Advanced_Behavior.Persistent_State.StateInfo"
              namespace="http://e2e.ch/bridge/advancedBehavior/persistentState"/>

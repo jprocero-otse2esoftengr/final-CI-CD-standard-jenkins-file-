@@ -1,13 +1,13 @@
-#Fri Sep 19 07:25:26 SGT 2025
+#Thu Sep 25 07:21:56 SGT 2025
 use.inspection.list=false
 control.url=http\://localhost\:21176
-last.run.inspection={}
 inspection={}
+last.run.inspection={}
 trace.maxsize=10
 request.timeout=180
 trace.enabled=true
-last.run.trace.mode=-1
 trace.mode=-1
+last.run.trace.mode=0
 property.trace.ignore.all.not.inspected=false
 location=http\://localhost\:11165/BuilderUMLService/NameOfPortType1
 description=

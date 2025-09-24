@@ -5,8 +5,8 @@ setlocal
 rem set environment
 
 set BRIDGESERVER_BIN=C:\Program Files\MagicDraw\plugins\ch.e2e.builder.plugin.magicdraw\bin\runtime\win\bin
-set INSTANCES_HOME=C:\Users\jproc\Desktop\appendarrayexercise\appendarrayexercise\.$bin
-set INSTANCE_HOME=C:\Users\jproc\Desktop\appendarrayexercise\appendarrayexercise\.$bin\BuilderUML.regtestlatest.regtestlatest
+set INSTANCES_HOME=C:\Users\jproc\Desktop\test\CI-CD-DELIVERY-master\CI-CD-DELIVERY-master\.$bin
+set INSTANCE_HOME=C:\Users\jproc\Desktop\test\CI-CD-DELIVERY-master\CI-CD-DELIVERY-master\.$bin\BuilderUML.regtestlatest.regtestlatest
 set CONSOLE_HOME=C:\Program Files\MagicDraw\plugins\ch.e2e.builder.plugin.magicdraw\bin\runtime\win\bin
 set PATH=%PATH%;C:\Program Files\MagicDraw\jre\bin;C:\Program Files\MagicDraw\jre\bin\dtplugin;C:\Program Files\MagicDraw\jre\bin\plugin2;C:\Program Files\MagicDraw\jre\bin\server
 

@@ -165,6 +165,18 @@
              namespace="urn:Base_Components.Add_Ons.JSON"/>
    <DataItem id="urn:Base_Components.Add_Ons.LDAP.LDAPEntry"
              namespace="urn:Base_Components.Add_Ons.LDAP"/>
+   <DataItem id="urn:Base_Components.Add_Ons.MongoDB.ExtendedJSONComposerOptions"
+             namespace="urn:Base_Components.Add_Ons.MongoDB"/>
+   <DataItem id="urn:Base_Components.Add_Ons.MongoDB.MongoDBFindOptions"
+             namespace="urn:Base_Components.Add_Ons.MongoDB"/>
+   <DataItem id="urn:Base_Components.Add_Ons.MongoDB.MongoDBHandle"
+             namespace="urn:Base_Components.Add_Ons.MongoDB"/>
+   <DataItem id="urn:Base_Components.Add_Ons.MongoDB.MongoDBReplaceOptions"
+             namespace="urn:Base_Components.Add_Ons.MongoDB"/>
+   <DataItem id="urn:Base_Components.Add_Ons.MongoDB.MongoDBUpdateOptions"
+             namespace="urn:Base_Components.Add_Ons.MongoDB">
+      <Element index="1" xsdType="string"/>
+   </DataItem>
    <DataItem id="urn:Base_Components.Add_Ons.POP3.POP3Authentication"
              namespace="urn:Base_Components.Add_Ons.POP3"/>
    <DataItem id="urn:Base_Components.Add_Ons.POP3.POP3Message"
@@ -240,10 +252,14 @@
              namespace="urn:Base_Components.Add_Ons.URL"/>
    <DataItem id="urn:Base_Components.Add_Ons.URL.SSL"
              namespace="urn:Base_Components.Add_Ons.URL"/>
+   <DataItem id="urn:Base_Components.Add_Ons.URL.URL"
+             namespace="urn:Base_Components.Add_Ons.URL"/>
    <DataItem id="urn:Base_Components.Add_Ons.URL.URLMessage"
              namespace="urn:Base_Components.Add_Ons.URL">
       <Element index="8" xsdType="string"/>
    </DataItem>
+   <DataItem id="urn:Base_Components.Add_Ons.URL.Utilities"
+             namespace="urn:Base_Components.Add_Ons.URL"/>
    <DataItem id="urn:Base_Components.Add_Ons.XSLT.XSLTParameter"
              namespace="urn:Base_Components.Add_Ons.XSLT"/>
    <DataItem id="urn:Base_Components.Add_Ons.XSLT.XSLTParameters"
@@ -254,13 +270,47 @@
              namespace="urn:Base_Components.Advanced_Behavior.Meta"/>
    <DataItem id="urn:Base_Components.Advanced_Behavior.Meta.Parameter"
              namespace="urn:Base_Components.Advanced_Behavior.Meta"/>
+   <DataItem id="urn:Base_Components.Advanced_Behavior.Persistent_State.AndQueryCondition"
+             namespace="urn:Base_Components.Advanced_Behavior.Persistent_State"/>
+   <DataItem id="urn:Base_Components.Advanced_Behavior.Persistent_State.ClassAttributeMetadata"
+             namespace="urn:Base_Components.Advanced_Behavior.Persistent_State"/>
    <DataItem id="urn:Base_Components.Advanced_Behavior.Persistent_State.BPMNTask"
+             namespace="urn:Base_Components.Advanced_Behavior.Persistent_State"/>
+   <DataItem id="urn:Base_Components.Advanced_Behavior.Persistent_State.ClassCounters"
+             namespace="urn:Base_Components.Advanced_Behavior.Persistent_State"/>
+   <DataItem id="urn:Base_Components.Advanced_Behavior.Persistent_State.ClassInfo"
+             namespace="urn:Base_Components.Advanced_Behavior.Persistent_State"/>
+   <DataItem id="urn:Base_Components.Advanced_Behavior.Persistent_State.ClassMetadata"
+             namespace="urn:Base_Components.Advanced_Behavior.Persistent_State">
+      <Element index="2" xsdType="string"/>
+      <Element index="3" xsdType="string"/>
+      <Element index="4" xsdType="string"/>
+   </DataItem>
+   <DataItem id="urn:Base_Components.Advanced_Behavior.Persistent_State.ComplexQueryCondition"
              namespace="urn:Base_Components.Advanced_Behavior.Persistent_State"/>
    <DataItem id="urn:Base_Components.Advanced_Behavior.Persistent_State.ErrorContext"
              namespace="urn:Base_Components.Advanced_Behavior.Persistent_State"/>
    <DataItem id="urn:Base_Components.Advanced_Behavior.Persistent_State.Event"
              namespace="urn:Base_Components.Advanced_Behavior.Persistent_State"/>
    <DataItem id="urn:Base_Components.Advanced_Behavior.Persistent_State.Handle"
+             namespace="urn:Base_Components.Advanced_Behavior.Persistent_State"/>
+   <DataItem id="urn:Base_Components.Advanced_Behavior.Persistent_State.ObjectEntry"
+             namespace="urn:Base_Components.Advanced_Behavior.Persistent_State">
+      <Element index="4" xsdType="string"/>
+   </DataItem>
+   <DataItem id="urn:Base_Components.Advanced_Behavior.Persistent_State.OrQueryCondition"
+             namespace="urn:Base_Components.Advanced_Behavior.Persistent_State"/>
+   <DataItem id="urn:Base_Components.Advanced_Behavior.Persistent_State.Owner"
+             namespace="urn:Base_Components.Advanced_Behavior.Persistent_State"/>
+   <DataItem id="urn:Base_Components.Advanced_Behavior.Persistent_State.QueryCondition"
+             namespace="urn:Base_Components.Advanced_Behavior.Persistent_State"/>
+   <DataItem id="urn:Base_Components.Advanced_Behavior.Persistent_State.SelectObjectsQuery"
+             namespace="urn:Base_Components.Advanced_Behavior.Persistent_State">
+      <Element index="8" xsdType="string"/>
+   </DataItem>
+   <DataItem id="urn:Base_Components.Advanced_Behavior.Persistent_State.SimpleQueryCondition"
+             namespace="urn:Base_Components.Advanced_Behavior.Persistent_State"/>
+   <DataItem id="urn:Base_Components.Advanced_Behavior.Persistent_State.StateCounters"
              namespace="urn:Base_Components.Advanced_Behavior.Persistent_State"/>
    <DataItem id="urn:Base_Components.Advanced_Behavior.Persistent_State.StateInfo"
              namespace="urn:Base_Components.Advanced_Behavior.Persistent_State"/>
@@ -364,6 +414,8 @@
    <DataItem id="urn:Base_Types.Any" namespace="urn:Base_Types"/>
    <DataItem id="urn:Base_Types.Array" namespace="urn:Base_Types"/>
    <DataItem id="urn:Base_Types.Array.element" namespace="urn:Base_Types.Array"/>
+   <DataItem id="urn:uml-interface:Base_Components.Add_Ons.MongoDB.MongoDB"
+             namespace="urn:uml-interface:Base_Components.Add_Ons.MongoDB"/>
    <DataItem id="urn:uml-interface:Base_Components.Add_Ons.SAP.RFCPort_IDOC_INBOUND_ASYNCHRONOUS"
              namespace="urn:uml-interface:Base_Components.Add_Ons.SAP"/>
    <DataItem id="urn:uml-interface:Base_Components.Add_Ons.SAP.RFCPort_IDOC_INBOUND_ASYNCHRONOUS_NEW"

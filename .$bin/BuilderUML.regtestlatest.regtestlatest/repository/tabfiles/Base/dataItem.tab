@@ -235,7 +235,7 @@
       <Blob name="message"/>
    </DataItem>
    <DataItem id="urn:Base_Components.Add_Ons.JMS.JMSConnectionInfo" name="JMSConnectionInfo">
-      <Record name="acknowledgeMode"/>
+      <String name="acknowledgeMode"/>
       <String name="name"/>
       <String name="user"/>
       <String name="password"/>
@@ -288,7 +288,7 @@
    </DataItem>
    <DataItem id="urn:Base_Components.Add_Ons.JMS.JMSSessionParameter"
              name="JMSSessionParameter">
-      <Record name="acknowledgeMode"/>
+      <String name="acknowledgeMode"/>
       <String name="name"/>
       <String name="connectionFactoryClass"/>
       <Array name="connectionFactoryProperties"
@@ -370,9 +370,35 @@
    <DataItem id="urn:Base_Components.Add_Ons.JSON.ComposerOptions" name="ComposerOptions">
       <Boolean name="keepNulls"/>
       <Boolean name="compact"/>
+      <Boolean defaultValue="true" name="writeTypeDiscriminator"/>
    </DataItem>
    <DataItem id="urn:Base_Components.Add_Ons.LDAP.LDAPEntry" name="LDAPEntry">
       <String name="dn"/>
+   </DataItem>
+   <DataItem id="urn:Base_Components.Add_Ons.MongoDB.ExtendedJSONComposerOptions"
+             name="ExtendedJSONComposerOptions">
+      <Boolean defaultValue="false" name="writeTypeDiscriminator"/>
+      <String name="format"/>
+      <Boolean name="keepNulls"/>
+   </DataItem>
+   <DataItem id="urn:Base_Components.Add_Ons.MongoDB.MongoDBFindOptions"
+             name="MongoDBFindOptions">
+      <Integer name="limit"/>
+      <Integer name="skip"/>
+      <String name="projection"/>
+      <String name="sort"/>
+   </DataItem>
+   <DataItem id="urn:Base_Components.Add_Ons.MongoDB.MongoDBHandle" name="MongoDBHandle">
+      <String name="id"/>
+   </DataItem>
+   <DataItem id="urn:Base_Components.Add_Ons.MongoDB.MongoDBReplaceOptions"
+             name="MongoDBReplaceOptions">
+      <Boolean name="upsert"/>
+   </DataItem>
+   <DataItem id="urn:Base_Components.Add_Ons.MongoDB.MongoDBUpdateOptions"
+             name="MongoDBUpdateOptions">
+      <Boolean name="upsert"/>
+      <Array name="arrayFilters" type="String"/>
    </DataItem>
    <DataItem id="urn:Base_Components.Add_Ons.POP3.POP3Authentication"
              name="POP3Authentication">
@@ -396,6 +422,7 @@
       <Array name="headers" type="urn:Base_Components.Add_Ons.HTTP.HeaderField"/>
       <Blob name="body"/>
       <Record name="responseObject" type="urn:Base_Types.Any"/>
+      <Record name="httpHeaderMap" type="urn:Base_Components.Basic_Behavior.Map.Map"/>
    </DataItem>
    <DataItem id="urn:Base_Components.Add_Ons.REST.NoResponseBody" name="NoResponseBody"/>
    <DataItem id="urn:Base_Components.Add_Ons.REST.Request" name="Request">
@@ -406,6 +433,7 @@
       <Blob name="body"/>
       <String name="path"/>
       <Record name="pathParameters" type="urn:Base_Components.Basic_Behavior.Map.Map"/>
+      <Record name="httpHeaderMap" type="urn:Base_Components.Basic_Behavior.Map.Map"/>
    </DataItem>
    <DataItem id="urn:Base_Components.Add_Ons.REST.RequestOptions" name="RequestOptions">
       <Array name="additionalHeaders" type="urn:Base_Components.Add_Ons.HTTP.HeaderField"/>
@@ -514,6 +542,7 @@
    <DataItem id="urn:Base_Components.Add_Ons.SOAP.HTTPTransport" name="HTTPTransport">
       <Integer name="statusCode"/>
       <Array name="headers" type="urn:Base_Components.Add_Ons.HTTP.HeaderField"/>
+      <Record name="httpHeaderMap" type="urn:Base_Components.Basic_Behavior.Map.Map"/>
    </DataItem>
    <DataItem id="urn:Base_Components.Add_Ons.SOAP.Reason" name="Reason">
       <String name="text"/>
@@ -588,6 +617,16 @@
       <Record name="certificate" type="urn:Base_Components.Add_Ons.URL.Certificate"/>
       <Record name="key" type="urn:Base_Components.Add_Ons.URL.Key"/>
    </DataItem>
+   <DataItem id="urn:Base_Components.Add_Ons.URL.URL" name="URL">
+      <String name="scheme"/>
+      <String name="user"/>
+      <String name="password"/>
+      <String name="host"/>
+      <Integer name="port"/>
+      <String name="path"/>
+      <String name="query"/>
+      <String name="fragment"/>
+   </DataItem>
    <DataItem id="urn:Base_Components.Add_Ons.URL.URLMessage" name="URLMessage">
       <String name="url"/>
       <Blob name="content"/>
@@ -600,6 +639,7 @@
       <Array name="commands" type="String"/>
       <Array name="options" type="urn:Base_Components.Add_Ons.URL.Option"/>
    </DataItem>
+   <DataItem id="urn:Base_Components.Add_Ons.URL.Utilities" name="Utilities"/>
    <DataItem id="urn:Base_Components.Add_Ons.XSLT.XSLTParameter" name="XSLTParameter">
       <String name="name"/>
       <String name="value"/>
@@ -626,6 +666,18 @@
       <Record name="value" type="urn:Base_Types.Any"/>
       <String name="direction"/>
    </DataItem>
+   <DataItem id="urn:Base_Components.Advanced_Behavior.Persistent_State.AndQueryCondition"
+             name="AndQueryCondition"
+             parent="urn:Base_Components.Advanced_Behavior.Persistent_State.ComplexQueryCondition">
+      <String defaultValue="conjunction" name="conditionType"/>
+      <Array name="condition"
+             type="urn:Base_Components.Advanced_Behavior.Persistent_State.QueryCondition"/>
+   </DataItem>
+   <DataItem id="urn:Base_Components.Advanced_Behavior.Persistent_State.ClassAttributeMetadata"
+             name="ClassAttributeMetadata">
+      <String name="name"/>
+      <String name="type"/>
+   </DataItem>
    <DataItem id="urn:Base_Components.Advanced_Behavior.Persistent_State.BPMNTask"
              name="BPMNTask">
       <String name="name"/>
@@ -634,6 +686,35 @@
       <Boolean name="isForCompensation"/>
       <Boolean name="hasCompensation"/>
       <DateTime name="end"/>
+   </DataItem>
+   <DataItem id="urn:Base_Components.Advanced_Behavior.Persistent_State.ClassCounters"
+             name="ClassCounters">
+      <String name="name"/>
+      <Integer name="count"/>
+      <Integer name="stalledCount"/>
+      <Array name="states"
+             type="urn:Base_Components.Advanced_Behavior.Persistent_State.StateCounters"/>
+   </DataItem>
+   <DataItem id="urn:Base_Components.Advanced_Behavior.Persistent_State.ClassInfo"
+             name="ClassInfo">
+      <String name="name"/>
+      <Integer name="count"/>
+   </DataItem>
+   <DataItem id="urn:Base_Components.Advanced_Behavior.Persistent_State.ClassMetadata"
+             name="ClassMetadata">
+      <String name="name"/>
+      <Array name="attributes"
+             type="urn:Base_Components.Advanced_Behavior.Persistent_State.ClassAttributeMetadata"/>
+      <Array name="primaryKey" type="String"/>
+      <Array name="searchKeys" type="String"/>
+      <Array name="externals" type="String"/>
+   </DataItem>
+   <DataItem id="urn:Base_Components.Advanced_Behavior.Persistent_State.ComplexQueryCondition"
+             name="ComplexQueryCondition"
+             parent="urn:Base_Components.Advanced_Behavior.Persistent_State.QueryCondition">
+      <String defaultValue="complex" name="conditionType"/>
+      <Array name="condition"
+             type="urn:Base_Components.Advanced_Behavior.Persistent_State.QueryCondition"/>
    </DataItem>
    <DataItem id="urn:Base_Components.Advanced_Behavior.Persistent_State.ErrorContext"
              name="ErrorContext">
@@ -663,6 +744,63 @@
       <String name="classifier"/>
       <String name="owner"/>
       <String name="conversationID"/>
+   </DataItem>
+   <DataItem id="urn:Base_Components.Advanced_Behavior.Persistent_State.ObjectEntry"
+             name="ObjectEntry">
+      <String name="id"/>
+      <String name="name"/>
+      <DateTime name="creation"/>
+      <DateTime name="lastUpdate"/>
+      <Array name="states" type="String"/>
+      <Record name="object" type="urn:Base_Types.Any"/>
+   </DataItem>
+   <DataItem id="urn:Base_Components.Advanced_Behavior.Persistent_State.OrQueryCondition"
+             name="OrQueryCondition"
+             parent="urn:Base_Components.Advanced_Behavior.Persistent_State.ComplexQueryCondition">
+      <String defaultValue="disjunction" name="conditionType"/>
+      <Array name="condition"
+             type="urn:Base_Components.Advanced_Behavior.Persistent_State.QueryCondition"/>
+   </DataItem>
+   <DataItem id="urn:Base_Components.Advanced_Behavior.Persistent_State.Owner" name="Owner">
+      <String name="id"/>
+      <String name="compositeName"/>
+      <String name="host"/>
+      <DateTime name="lastStartup"/>
+      <DateTime name="lastShutdown"/>
+      <Integer name="ownedObjects"/>
+      <Boolean name="isSelf"/>
+   </DataItem>
+   <DataItem id="urn:Base_Components.Advanced_Behavior.Persistent_State.QueryCondition"
+             name="QueryCondition">
+      <String defaultValue="" name="conditionType"/>
+   </DataItem>
+   <DataItem id="urn:Base_Components.Advanced_Behavior.Persistent_State.SelectObjectsQuery"
+             name="SelectObjectsQuery">
+      <String name="classifier"/>
+      <DateTime name="creationFrom"/>
+      <DateTime name="creationTo"/>
+      <String name="sortByCreation"/>
+      <DateTime name="updateFrom"/>
+      <DateTime name="updateTo"/>
+      <String name="sortByUpdate"/>
+      <Integer defaultValue="1000" name="limit"/>
+      <Array name="state" type="String"/>
+      <Record name="condition"
+              type="urn:Base_Components.Advanced_Behavior.Persistent_State.QueryCondition"/>
+   </DataItem>
+   <DataItem id="urn:Base_Components.Advanced_Behavior.Persistent_State.SimpleQueryCondition"
+             name="SimpleQueryCondition"
+             parent="urn:Base_Components.Advanced_Behavior.Persistent_State.QueryCondition">
+      <String defaultValue="simple" name="conditionType"/>
+      <String name="attribute"/>
+      <String defaultValue="=" name="operator"/>
+      <Record name="value" type="urn:Base_Types.Any"/>
+   </DataItem>
+   <DataItem id="urn:Base_Components.Advanced_Behavior.Persistent_State.StateCounters"
+             name="StateCounters">
+      <String name="name"/>
+      <Integer name="count"/>
+      <Integer name="stalledCount"/>
    </DataItem>
    <DataItem id="urn:Base_Components.Advanced_Behavior.Persistent_State.StateInfo"
              name="StateInfo">
@@ -781,7 +919,7 @@
    <DataItem id="urn:Base_Components.Advanced_Behavior.UI.UIEvent" name="UIEvent">
       <Record name="target" type="urn:Base_Components.Advanced_Behavior.UI.DOMNode"/>
       <Record name="data" type="urn:Base_Types.Any"/>
-      <Record name="type"/>
+      <String name="type"/>
       <Integer name="timeStamp"/>
    </DataItem>
    <DataItem id="urn:Base_Components.Advanced_Behavior.UI.UISOAPErrorMessage"
@@ -929,6 +1067,7 @@
    <DataItem id="urn:Base_Types.Any" name="Any"/>
    <DataItem id="urn:Base_Types.Array" name="Array" parent="urn:Base_Types.Any"/>
    <DataItem id="urn:Base_Types.Array.element" name="element"/>
+   <DataItem id="urn:uml-interface:Base_Components.Add_Ons.MongoDB.MongoDB" name="MongoDB"/>
    <DataItem id="urn:uml-interface:Base_Components.Add_Ons.SAP.RFCPort_IDOC_INBOUND_ASYNCHRONOUS"
              name="RFCPort_IDOC_INBOUND_ASYNCHRONOUS"/>
    <DataItem id="urn:uml-interface:Base_Components.Add_Ons.SAP.RFCPort_IDOC_INBOUND_ASYNCHRONOUS_NEW"

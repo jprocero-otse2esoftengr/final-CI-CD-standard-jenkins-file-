@@ -109,7 +109,43 @@
       <Type>FUC_VALUE</Type>
    </Function>
    <Function>
+      <ID>value...urn:Base_Components.Add_Ons.JSON.ComposerOptions.writeTypeDiscriminator</ID>
+      <Type>FUC_VALUE</Type>
+   </Function>
+   <Function>
+      <ID>value...urn:Base_Components.Add_Ons.MongoDB.ExtendedJSONComposerOptions.writeTypeDiscriminator</ID>
+      <Type>FUC_VALUE</Type>
+   </Function>
+   <Function>
       <ID>value...urn:Base_Components.Advanced_Behavior.Meta.ActionInterceptorMessage.ignoreAction</ID>
+      <Type>FUC_VALUE</Type>
+   </Function>
+   <Function>
+      <ID>value...urn:Base_Components.Advanced_Behavior.Persistent_State.AndQueryCondition.conditionType</ID>
+      <Type>FUC_VALUE</Type>
+   </Function>
+   <Function>
+      <ID>value...urn:Base_Components.Advanced_Behavior.Persistent_State.ComplexQueryCondition.conditionType</ID>
+      <Type>FUC_VALUE</Type>
+   </Function>
+   <Function>
+      <ID>value...urn:Base_Components.Advanced_Behavior.Persistent_State.OrQueryCondition.conditionType</ID>
+      <Type>FUC_VALUE</Type>
+   </Function>
+   <Function>
+      <ID>value...urn:Base_Components.Advanced_Behavior.Persistent_State.QueryCondition.conditionType</ID>
+      <Type>FUC_VALUE</Type>
+   </Function>
+   <Function>
+      <ID>value...urn:Base_Components.Advanced_Behavior.Persistent_State.SelectObjectsQuery.limit</ID>
+      <Type>FUC_VALUE</Type>
+   </Function>
+   <Function>
+      <ID>value...urn:Base_Components.Advanced_Behavior.Persistent_State.SimpleQueryCondition.conditionType</ID>
+      <Type>FUC_VALUE</Type>
+   </Function>
+   <Function>
+      <ID>value...urn:Base_Components.Advanced_Behavior.Persistent_State.SimpleQueryCondition.operator</ID>
       <Type>FUC_VALUE</Type>
    </Function>
    <Function>
@@ -126,6 +162,14 @@
    </Function>
    <Function>
       <ID>value...urn:Base_Components.Basic_Behavior.XML.XMLComposeOptions.encoding</ID>
+      <Type>FUC_VALUE</Type>
+   </Function>
+   <Function>
+      <ID>value...getCompositeVersion</ID>
+      <Type>FUC_VALUE</Type>
+   </Function>
+   <Function>
+      <ID>value...getCompositeCategory</ID>
       <Type>FUC_VALUE</Type>
    </Function>
 </Functions>

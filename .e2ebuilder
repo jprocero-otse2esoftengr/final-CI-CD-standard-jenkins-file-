@@ -2,12 +2,12 @@
 <project>
    <generic>
       <author type="java.lang.String">jprocero</author>
-      <name type="java.lang.String">appendarrayexercise</name>
+      <name type="java.lang.String">CI-CD-DELIVERY-master</name>
       <description type="java.lang.String"/>
       <repository type="java.io.File">repository</repository>
    </generic>
-   <tracer/>
-   <compiler>
+   <tracer prefix="ch.e2e.builder.tracer."/>
+   <compiler prefix="ch.e2e.builder.compiler.">
       <uml type="java.io.File">uml</uml>
       <optimize.java.script type="java.lang.Boolean">false</optimize.java.script>
    </compiler>
