@@ -1,3 +1,5 @@
+#!groovy
+
 pipeline {
     agent any
 
@@ -5,21 +7,23 @@ pipeline {
         buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '1'))
         disableConcurrentBuilds()
     }
-    
-    // Environment variables can be added here if needed
-    
+
+    environment {
+        REGTEST_JAR = 'jarfiles/RegTestRunner-8.10.5.jar'
+    }
+
     triggers {
         pollSCM('H/5 * * * *')  // Poll GitHub every 5 minutes
     }
-    
+
     parameters {
         choice(name: 'XUMLC', choices: ['jarfiles/xumlc-7.20.0.jar'], description: 'Location of the xUML Compiler')
         choice(name: 'REGTEST', choices: ['jarfiles/RegTestRunner-8.10.5.jar'], description: 'Location of the Regression Test Runner')
         string(name: 'BRIDGE_HOST', defaultValue: 'ec2-52-74-183-0.ap-southeast-1.compute.amazonaws.com', description: 'Bridge host address')
         string(name: 'BRIDGE_USER', defaultValue: 'jprocero', description: 'Bridge username')
         password(name: 'BRIDGE_PASSWORD', defaultValue: 'jprocero', description: 'Bridge password')
-        string(name: 'BRIDGE_PORT', defaultValue: '11165', description: 'Bridge port')
-        string(name: 'CONTROL_PORT', defaultValue: '21176', description: 'Control port')
+        string(name: 'BRIDGE_PORT', defaultValue: '11186', description: 'Bridge port')
+        string(name: 'CONTROL_PORT', defaultValue: '21190', description: 'Control port')
     }
 
 
@@ -29,7 +33,7 @@ pipeline {
             steps {
                 dir('.') {
                     bat """
-                        java -jar ${params.XUMLC} -uml uml/BuilderUML.xml
+                        java -jar ${XUMLC} -uml uml/BuilderUML.xml
                         if errorlevel 1 exit /b 1
                         echo Build completed successfully
                         dir repository\\BuilderUML\\*.rep
@@ -44,13 +48,13 @@ pipeline {
                     bat """
                         echo Checking for repository files...
                        
-                        if not exist repository\\BuilderUML\\regtestlatest.rep (
-                            echo ERROR: regtestlatest.rep not found!
+                        if not exist repository\\BuilderUML\\JenkinsCoffeeSoap.rep (
+                            echo ERROR: JenkinsCoffeeSoap.rep not found!
                             exit /b 1
                         )
                          
                         echo All repository files found, starting deployment...
-                        npx e2e-bridge-cli deploy repository/BuilderUML/regtestlatest.rep -h ${params.BRIDGE_HOST} -u ${params.BRIDGE_USER} -P ${params.BRIDGE_PASSWORD} -o overwrite
+                        npx e2e-bridge-cli deploy repository/BuilderUML/JenkinsCoffeeSoap.rep -h ${BRIDGE_HOST} -u ${BRIDGE_USER} -P ${BRIDGE_PASSWORD} -o overwrite
                         
                     """
                 }
@@ -61,7 +65,7 @@ pipeline {
                 dir('regressiontest') {
                     bat """
                         echo Listing available test suites...
-                        java -jar ${params.REGTEST} -project . -list
+                        java -jar ${REGTEST_JAR} -project . -list
                         echo.
                         echo Checking project structure...
                         dir /s testsuite
@@ -82,11 +86,11 @@ pipeline {
                 dir('.') {
                     bat """
                         echo Starting regression tests...
-                        echo Using RegTest jar: ${params.REGTEST}
+                        echo Using RegTest jar: ${REGTEST_JAR}
                         
                         echo Checking if regtest jar exists...
-                        if not exist "${params.REGTEST}" (
-                            echo ERROR: RegTest jar not found at ${params.REGTEST}
+                        if not exist "${REGTEST_JAR}" (
+                            echo ERROR: RegTest jar not found at ${REGTEST_JAR}
                             exit /b 1
                         )
                         
@@ -100,20 +104,20 @@ pipeline {
                         echo Starting regression tests...
                         echo Test configuration:
                         echo - Project: .
-                        echo - Host: ${params.BRIDGE_HOST}
-                        echo - Port: ${params.BRIDGE_PORT}
-                        echo - Control Port: ${params.CONTROL_PORT}
-                        echo - Username: ${params.BRIDGE_USER}
+                        echo - Host: ${BRIDGE_HOST}
+                        echo - Port: ${BRIDGE_PORT}
+                        echo - Control Port: ${CONTROL_PORT}
+                        echo - Username: ${BRIDGE_USER}
                         echo - Note: RegTestRunner will run all available test suites in the project
                         
                         echo.
                         echo Checking available test suites...
-                        java -jar "${params.REGTEST}" -project . -host ${params.BRIDGE_HOST} -port ${params.BRIDGE_PORT} -username ${params.BRIDGE_USER} -password ${params.BRIDGE_PASSWORD} -list
+                        java -jar "${REGTEST_JAR}" -project . -host ${BRIDGE_HOST} -port ${BRIDGE_PORT} -username ${BRIDGE_USER} -password ${BRIDGE_PASSWORD} -list
                         
                         echo.
                         echo Running all available regression tests...
-                        echo Command: java -jar "${params.REGTEST}" -project . -host ${params.BRIDGE_HOST} -port ${params.BRIDGE_PORT} -username ${params.BRIDGE_USER} -password ${params.BRIDGE_PASSWORD} -logfile regressiontest/result.xml
-                        java -jar "${params.REGTEST}" -project . -host ${params.BRIDGE_HOST} -port ${params.BRIDGE_PORT} -username ${params.BRIDGE_USER} -password ${params.BRIDGE_PASSWORD} -logfile regressiontest/result.xml
+                        echo Command: java -jar "${REGTEST_JAR}" -project . -host ${BRIDGE_HOST} -port ${BRIDGE_PORT} -username ${BRIDGE_USER} -password ${BRIDGE_PASSWORD} -logfile regressiontest/result.xml
+                        java -jar "${REGTEST_JAR}" -project . -host ${BRIDGE_HOST} -port ${BRIDGE_PORT} -username ${BRIDGE_USER} -password ${BRIDGE_PASSWORD} -logfile regressiontest/result.xml
                         
                         echo.
                         echo Checking if result.xml was created...
