@@ -50,33 +50,8 @@ pipeline {
                         )
                          
                         echo All repository files found, starting deployment...
-                        echo Deploying to bridge host: ${params.BRIDGE_HOST}
                         npx e2e-bridge-cli deploy repository/BuilderUML/regtestlatest.rep -h ${params.BRIDGE_HOST} -u ${params.BRIDGE_USER} -P ${params.BRIDGE_PASSWORD} -o overwrite
                         
-                    """
-                }
-            }
-        }
-        stage('Start Bridge Server') {
-            steps {
-                dir('.') {
-                    bat """
-                        echo Starting bridge server on control port: ${params.CONTROL_PORT}
-                        echo Checking if bridge server is already running...
-                        
-                        set BRIDGE_DIR=.\\$bin\\BuilderUML.regtestlatest.regtestlatest
-                        if exist "%BRIDGE_DIR%\\server.pid" (
-                            echo Bridge server appears to be running, checking status...
-                        ) else (
-                            echo Starting bridge server...
-                            cd "%BRIDGE_DIR%"
-                            call bin\\start.bat
-                            echo Bridge server startup initiated
-                        )
-                        
-                        echo Waiting for bridge server to be ready...
-                        timeout /t 10 /nobreak > nul
-                        echo Bridge server should now be running on control port: ${params.CONTROL_PORT}
                     """
                 }
             }
@@ -86,8 +61,7 @@ pipeline {
                 dir('regressiontest') {
                     bat """
                         echo Listing available test suites...
-                        echo Using Control Port: ${params.CONTROL_PORT}
-                        java -jar ${params.REGTEST} -project . -controlport ${params.CONTROL_PORT} -list
+                        java -jar ${params.REGTEST} -project . -list
                         echo.
                         echo Checking project structure...
                         dir /s testsuite
@@ -134,14 +108,12 @@ pipeline {
                         
                         echo.
                         echo Checking available test suites...
-                        java -jar "${params.REGTEST}" -project . -host ${params.BRIDGE_HOST} -port ${params.BRIDGE_PORT} -controlport ${params.CONTROL_PORT} -username ${params.BRIDGE_USER} -password ${params.BRIDGE_PASSWORD} -list
+                        java -jar "${params.REGTEST}" -project . -host ${params.BRIDGE_HOST} -port ${params.BRIDGE_PORT} -username ${params.BRIDGE_USER} -password ${params.BRIDGE_PASSWORD} -list
                         
                         echo.
                         echo Running all available regression tests...
-                        echo Using Bridge Port: ${params.BRIDGE_PORT}
-                        echo Using Control Port: ${params.CONTROL_PORT}
-                        echo Command: java -jar "${params.REGTEST}" -project . -host ${params.BRIDGE_HOST} -port ${params.BRIDGE_PORT} -controlport ${params.CONTROL_PORT} -username ${params.BRIDGE_USER} -password ${params.BRIDGE_PASSWORD} -logfile regressiontest/result.xml
-                        java -jar "${params.REGTEST}" -project . -host ${params.BRIDGE_HOST} -port ${params.BRIDGE_PORT} -controlport ${params.CONTROL_PORT} -username ${params.BRIDGE_USER} -password ${params.BRIDGE_PASSWORD} -logfile regressiontest/result.xml
+                        echo Command: java -jar "${params.REGTEST}" -project . -host ${params.BRIDGE_HOST} -port ${params.BRIDGE_PORT} -username ${params.BRIDGE_USER} -password ${params.BRIDGE_PASSWORD} -logfile regressiontest/result.xml
+                        java -jar "${params.REGTEST}" -project . -host ${params.BRIDGE_HOST} -port ${params.BRIDGE_PORT} -username ${params.BRIDGE_USER} -password ${params.BRIDGE_PASSWORD} -logfile regressiontest/result.xml
                         
                         echo.
                         echo Checking if result.xml was created...
