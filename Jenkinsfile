@@ -22,8 +22,8 @@ pipeline {
         string(name: 'BRIDGE_HOST', defaultValue: 'ec2-52-74-183-0.ap-southeast-1.compute.amazonaws.com', description: 'Bridge host address')
         string(name: 'BRIDGE_USER', defaultValue: 'jprocero', description: 'Bridge username')
         password(name: 'BRIDGE_PASSWORD', defaultValue: 'jprocero', description: 'Bridge password')
-        string(name: 'BRIDGE_PORT', defaultValue: '11186', description: 'Bridge port')
-        string(name: 'CONTROL_PORT', defaultValue: '21190', description: 'Control port')
+        string(name: 'BRIDGE_PORT', defaultValue: '11165', description: 'Bridge port')
+        string(name: 'CONTROL_PORT', defaultValue: '21176', description: 'Control port')
     }
 
 
@@ -48,13 +48,13 @@ pipeline {
                     bat """
                         echo Checking for repository files...
                        
-                        if not exist repository\\BuilderUML\\JenkinsCoffeeSoap.rep (
-                            echo ERROR: JenkinsCoffeeSoap.rep not found!
+                        if not exist repository\\BuilderUML\\regtestlatest.rep (
+                            echo ERROR: regtestlatest.rep not found!
                             exit /b 1
                         )
                          
                         echo All repository files found, starting deployment...
-                        npx e2e-bridge-cli deploy repository/BuilderUML/JenkinsCoffeeSoap.rep -h ${BRIDGE_HOST} -u ${BRIDGE_USER} -P ${BRIDGE_PASSWORD} -o overwrite
+                        npx e2e-bridge-cli deploy repository/BuilderUML/regtestlatest.rep -h ${BRIDGE_HOST} -u ${BRIDGE_USER} -P ${BRIDGE_PASSWORD} -o overwrite
                         
                     """
                 }
