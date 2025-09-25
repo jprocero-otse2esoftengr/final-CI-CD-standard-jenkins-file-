@@ -110,12 +110,12 @@ pipeline {
                         
                         echo.
                         echo Checking available test suites...
-                        java -jar "${REGTEST_JAR}" -project . -host ${params.BRIDGE_HOST} -port ${params.BRIDGE_PORT} -username ${params.BRIDGE_USER} -password ${params.BRIDGE_PASSWORD} -list
+                        java -jar "${REGTEST_JAR}" -project . -host ${params.BRIDGE_HOST} -port ${params.BRIDGE_PORT} -username ${params.BRIDGE_USER} -password ${params.BRIDGE_PASSWORD} -controlport 0 -list
                         
                         echo.
                         echo Running all available regression tests...
-                        echo Command: java -jar "${REGTEST_JAR}" -project . -host ${params.BRIDGE_HOST} -port ${params.BRIDGE_PORT} -username ${params.BRIDGE_USER} -password ${params.BRIDGE_PASSWORD} -logfile regressiontest/result.xml
-                        java -jar "${REGTEST_JAR}" -project . -host ${params.BRIDGE_HOST} -port ${params.BRIDGE_PORT} -username ${params.BRIDGE_USER} -password ${params.BRIDGE_PASSWORD} -logfile regressiontest/result.xml
+                        echo Command: java -jar "${REGTEST_JAR}" -project . -host ${params.BRIDGE_HOST} -port ${params.BRIDGE_PORT} -username ${params.BRIDGE_USER} -password ${params.BRIDGE_PASSWORD} -controlport 0 -logfile regressiontest/result.xml
+                        java -jar "${REGTEST_JAR}" -project . -host ${params.BRIDGE_HOST} -port ${params.BRIDGE_PORT} -username ${params.BRIDGE_USER} -password ${params.BRIDGE_PASSWORD} -controlport 0 -logfile regressiontest/result.xml
                         
                         echo.
                         echo Checking if result.xml was created...
