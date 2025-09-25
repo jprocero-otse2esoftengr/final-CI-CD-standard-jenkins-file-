@@ -24,7 +24,7 @@
          </PersistentStateConfiguration>
          <GlobalSAPSettings DefaultConnectionPoolSize="10" FieldPadding="NEVER" ServerWorkerThreads="1"/>
          <CompilerInformation>
-            <BuildTime millis="1758804153541">Thu, Sep 25, 2025, 20:42:33 SGT</BuildTime>
+            <BuildTime millis="1758804306719">Thu, Sep 25, 2025, 20:45:06 SGT</BuildTime>
             <Compiler version="7.4.0"/>
             <Builder runtime="2019.3" version="7.4.0"/>
          </CompilerInformation>

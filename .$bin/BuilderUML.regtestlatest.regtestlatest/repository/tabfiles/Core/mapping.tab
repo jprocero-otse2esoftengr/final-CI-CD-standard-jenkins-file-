@@ -12,6 +12,10 @@
       <Set source="2" target="0"
            targetDataItem="urn:Services.NameOfService1.Classes.idClass"/>
    </Mapping>
+   <Mapping id="om@2071638018h-981329032">
+      <Set source="1" target="0"
+           targetDataItem="urn:Services.NameOfService1.Classes.outputClass"/>
+   </Mapping>
    <Mapping id="om@2071638018h1185220296">
       <Set source="1" target="0"
            targetDataItem="urn:Services.NameOfService1.Classes.outputClass"/>
@@ -45,6 +49,16 @@
            targetDataItem="urn:Services.NameOfService1.Classes.idClass"/>
       <Append source="2" statement="8" target="1.6"
               targetDataItem="urn:Services.NameOfService1.Classes.outputClass"/>
+   </Mapping>
+   <Mapping id="sm2071638018h-981329032">
+      <Set source="create...f2071638018h1625116305.0_1" statement="1" target="1"
+           targetDataItem="urn:Services.NameOfService1.Classes.outputClass"/>
+      <Set source="value...f2071638018h1625116305.1_1" statement="2" target="1.8"
+           targetDataItem="urn:Services.NameOfService1.Classes.outputClass"/>
+      <Set source="value...f2071638018h1625116305.2_1" statement="3" target="1.9"
+           targetDataItem="urn:Services.NameOfService1.Classes.outputClass"/>
+      <Set source="value...f2071638018h1625116305.3_1" statement="4" target="1.10"
+           targetDataItem="urn:Services.NameOfService1.Classes.outputClass"/>
    </Mapping>
    <Mapping id="sm2071638018h1185220296">
       <Set source="create...f2071638018h2039715482.0_1" statement="1" target="1"

@@ -19,6 +19,9 @@
       <XMLElement index="0" name="idClass"/>
       <XMLElement index="1" name="outputClass"/>
    </DataItem>
+   <DataItem id="omsg2071638018h-981329032">
+      <XMLElement index="0" name="outputClass"/>
+   </DataItem>
    <DataItem id="omsg2071638018h1185220296">
       <XMLElement index="0" name="outputClass"/>
    </DataItem>
