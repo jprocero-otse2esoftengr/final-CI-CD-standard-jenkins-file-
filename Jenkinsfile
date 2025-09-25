@@ -103,19 +103,19 @@ pipeline {
                         echo Starting regression tests...
                         echo Test configuration:
                         echo - Project: .
-                        echo - Host: ${BRIDGE_HOST}
-                        echo - Port: ${BRIDGE_PORT}
-                        echo - Username: ${BRIDGE_USER}
+                        echo - Host: ${params.BRIDGE_HOST}
+                        echo - Port: ${params.BRIDGE_PORT}
+                        echo - Username: ${params.BRIDGE_USER}
                         echo - Note: RegTestRunner will run all available test suites in the project
                         
                         echo.
                         echo Checking available test suites...
-                        java -jar "${REGTEST_JAR}" -project . -host ${BRIDGE_HOST} -port ${BRIDGE_PORT} -username ${BRIDGE_USER} -password ${BRIDGE_PASSWORD} -list
+                        java -jar "${REGTEST_JAR}" -project . -host ${params.BRIDGE_HOST} -port ${params.BRIDGE_PORT} -username ${params.BRIDGE_USER} -password ${params.BRIDGE_PASSWORD} -list
                         
                         echo.
                         echo Running all available regression tests...
-                        echo Command: java -jar "${REGTEST_JAR}" -project . -host ${BRIDGE_HOST} -port ${BRIDGE_PORT} -username ${BRIDGE_USER} -password ${BRIDGE_PASSWORD} -logfile regressiontest/result.xml
-                        java -jar "${REGTEST_JAR}" -project . -host ${BRIDGE_HOST} -port ${BRIDGE_PORT} -username ${BRIDGE_USER} -password ${BRIDGE_PASSWORD} -logfile regressiontest/result.xml
+                        echo Command: java -jar "${REGTEST_JAR}" -project . -host ${params.BRIDGE_HOST} -port ${params.BRIDGE_PORT} -username ${params.BRIDGE_USER} -password ${params.BRIDGE_PASSWORD} -logfile regressiontest/result.xml
+                        java -jar "${REGTEST_JAR}" -project . -host ${params.BRIDGE_HOST} -port ${params.BRIDGE_PORT} -username ${params.BRIDGE_USER} -password ${params.BRIDGE_PASSWORD} -logfile regressiontest/result.xml
                         
                         echo.
                         echo Checking if result.xml was created...
