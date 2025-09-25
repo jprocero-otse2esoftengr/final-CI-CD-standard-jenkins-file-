@@ -56,7 +56,7 @@ pipeline {
                         echo All repository files found, starting deployment...
                         echo Deploying with overwrite option...
                        
-                        npx e2e-bridge-cli stop regtestlatest -h ${params.BRIDGE_HOST} -u ${params.BRIDGE_USER} -P ${params.BRIDGE_PASSWORD} 2>nul || echo "No existing instance to stop"
+                        npx e2e-bridge-cli deploy regtestlatest -h ${params.BRIDGE_HOST} -u ${params.BRIDGE_USER} -P ${params.BRIDGE_PASSWORD} 2>nul || echo "No existing instance to stop"
                         
                        
                         
