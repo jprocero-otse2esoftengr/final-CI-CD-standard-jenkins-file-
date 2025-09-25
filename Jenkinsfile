@@ -20,7 +20,7 @@ pipeline {
         string(name: 'BRIDGE_USER', defaultValue: 'jprocero', description: 'Bridge username')
         password(name: 'BRIDGE_PASSWORD', defaultValue: 'jprocero', description: 'Bridge password')
         string(name: 'BRIDGE_PORT', defaultValue: '11165', description: 'Bridge port')
-        string(name: 'CONTROL_PORT', defaultValue: '21178', description: 'Control port')
+        string(name: 'CONTROL_PORT', defaultValue: '21179', description: 'Control port')
     }
 
 
@@ -30,10 +30,13 @@ pipeline {
             steps {
                 dir('.') {
                     bat """
+                        echo Building with control port ${params.CONTROL_PORT}...
                         java -jar ${params.XUMLC} -uml uml/BuilderUML.xml
                         if errorlevel 1 exit /b 1
-                        echo Build completed successfully
+                        echo Build completed successfully with control port ${params.CONTROL_PORT}
+                        echo Verifying repository files...
                         dir repository\\BuilderUML\\*.rep
+                        echo Control port ${params.CONTROL_PORT} configured in build
                     """
                     archiveArtifacts artifacts: 'repository/BuilderUML/*.rep'
                 }
@@ -43,11 +46,21 @@ pipeline {
             steps {
                 dir('.') {
                     bat """
-                        
-                         
+                        echo Checking for repository files...
                        
+                        if not exist repository\\BuilderUML\\regtestlatest.rep (
+                            echo ERROR: regtestlatest.rep not found!
+                            exit /b 1
+                        )
+                         
+                        echo All repository files found, starting deployment...
+                        echo Deploying with overwrite option...
                         npx e2e-bridge-cli deploy repository/BuilderUML/regtestlatest.rep -h ${params.BRIDGE_HOST} -u ${params.BRIDGE_USER} -P ${params.BRIDGE_PASSWORD} -o overwrite
-                      
+                        echo Stopping any existing instance...
+                        npx e2e-bridge-cli stop regtestlatest -h ${params.BRIDGE_HOST} -u ${params.BRIDGE_USER} -P ${params.BRIDGE_PASSWORD} 2>nul || echo "No existing instance to stop"
+                        echo Starting the service...
+                        npx e2e-bridge-cli start regtestlatest -h ${params.BRIDGE_HOST} -u ${params.BRIDGE_USER} -P ${params.BRIDGE_PASSWORD}
+                        
                     """
                 }
             }
