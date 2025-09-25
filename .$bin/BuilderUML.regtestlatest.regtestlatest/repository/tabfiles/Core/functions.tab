@@ -25,22 +25,6 @@
       <Type>FUC_VALUE</Type>
    </Function>
    <Function>
-      <ID>create...f2071638018h1625116305.0_1</ID>
-      <Type>FUC_ITEM</Type>
-   </Function>
-   <Function>
-      <ID>value...f2071638018h1625116305.1_1</ID>
-      <Type>FUC_VALUE</Type>
-   </Function>
-   <Function>
-      <ID>value...f2071638018h1625116305.2_1</ID>
-      <Type>FUC_VALUE</Type>
-   </Function>
-   <Function>
-      <ID>value...f2071638018h1625116305.3_1</ID>
-      <Type>FUC_VALUE</Type>
-   </Function>
-   <Function>
       <ID>create...f2071638018h2039715482.0_1</ID>
       <Type>FUC_ITEM</Type>
    </Function>
@@ -66,14 +50,6 @@
    </Function>
    <Function>
       <ID>value...f2071638018h-310306500.2_1</ID>
-      <Type>FUC_VALUE</Type>
-   </Function>
-   <Function>
-      <ID>compareEq...f2071638018h-1304393832.0_1</ID>
-      <Type>FUB_COMPARE</Type>
-   </Function>
-   <Function>
-      <ID>value...f2071638018h-1304393832.1_3</ID>
       <Type>FUC_VALUE</Type>
    </Function>
    <Function>

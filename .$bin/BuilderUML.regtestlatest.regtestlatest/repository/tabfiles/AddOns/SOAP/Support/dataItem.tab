@@ -38,27 +38,6 @@
    <DataItem id="FO_value...f2071638018h-305305580.3_1">
       <Element index="0" isNillable="true"/>
    </DataItem>
-   <DataItem id="sm2071638018h-981329032_0">
-      <Element index="0" isNillable="true"/>
-   </DataItem>
-   <DataItem id="sm2071638018h-981329032_1">
-      <Element index="0" isNillable="true"/>
-   </DataItem>
-   <DataItem id="sm2071638018h-981329032_2">
-      <Element index="0" isNillable="true"/>
-   </DataItem>
-   <DataItem id="sm2071638018h-981329032_3">
-      <Element index="0" isNillable="true"/>
-   </DataItem>
-   <DataItem id="FO_value...f2071638018h1625116305.1_1">
-      <Element index="0" isNillable="true"/>
-   </DataItem>
-   <DataItem id="FO_value...f2071638018h1625116305.2_1">
-      <Element index="0" isNillable="true"/>
-   </DataItem>
-   <DataItem id="FO_value...f2071638018h1625116305.3_1">
-      <Element index="0" isNillable="true"/>
-   </DataItem>
    <DataItem id="sm2071638018h1185220296_0">
       <Element index="0" isNillable="true"/>
    </DataItem>
@@ -99,16 +78,6 @@
       <Element index="0" isNillable="true"/>
    </DataItem>
    <DataItem id="FO_value...f2071638018h-310306500.2_1">
-      <Element index="0" isNillable="true"/>
-   </DataItem>
-   <DataItem id="FI_compareEq...f2071638018h-1304393832.0_1">
-      <Element index="0" isNillable="true"/>
-      <Element index="1" isNillable="true"/>
-   </DataItem>
-   <DataItem id="FO_compareEq...f2071638018h-1304393832.0_1">
-      <Element index="0" isNillable="true"/>
-   </DataItem>
-   <DataItem id="FO_value...f2071638018h-1304393832.1_3">
       <Element index="0" isNillable="true"/>
    </DataItem>
    <DataItem id="FI_compareEq...f2071638018h-1779724044.0_1">

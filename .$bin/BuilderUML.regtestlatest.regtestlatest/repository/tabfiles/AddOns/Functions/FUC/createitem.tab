@@ -15,13 +15,6 @@
       <DataItemID>urn:Services.NameOfService1.Classes.idClass</DataItemID>
    </Function>
    <Function>
-      <ID>create...f2071638018h1625116305.0_1</ID>
-      <Source/>
-      <TargetIndex/>
-      <ObjectType>Record</ObjectType>
-      <DataItemID>urn:Services.NameOfService1.Classes.outputClass</DataItemID>
-   </Function>
-   <Function>
       <ID>create...f2071638018h2039715482.0_1</ID>
       <Source/>
       <TargetIndex/>

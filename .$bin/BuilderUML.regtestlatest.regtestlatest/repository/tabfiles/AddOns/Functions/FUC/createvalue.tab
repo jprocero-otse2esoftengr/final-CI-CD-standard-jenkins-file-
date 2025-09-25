@@ -19,21 +19,6 @@
       <Value>one</Value>
    </Function>
    <Function>
-      <ID>value...f2071638018h1625116305.1_1</ID>
-      <ItemType>String</ItemType>
-      <Value>BLOCKED</Value>
-   </Function>
-   <Function>
-      <ID>value...f2071638018h1625116305.2_1</ID>
-      <ItemType>String</ItemType>
-      <Value>Last name not allowed</Value>
-   </Function>
-   <Function>
-      <ID>value...f2071638018h1625116305.3_1</ID>
-      <ItemType>Boolean</ItemType>
-      <Value>true</Value>
-   </Function>
-   <Function>
       <ID>value...f2071638018h2039715482.1_1</ID>
       <ItemType>String</ItemType>
       <Value>POSITION BLOCKED</Value>
@@ -57,11 +42,6 @@
       <ID>value...f2071638018h-310306500.2_1</ID>
       <ItemType>String</ItemType>
       <Value>Input validated successfully</Value>
-   </Function>
-   <Function>
-      <ID>value...f2071638018h-1304393832.1_3</ID>
-      <ItemType>String</ItemType>
-      <Value>rocero</Value>
    </Function>
    <Function>
       <ID>value...f2071638018h-1779724044.1_3</ID>
