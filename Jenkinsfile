@@ -4,23 +4,23 @@ pipeline {
     agent any
 
     options {
-        buildDiscarder(logRotator(numToKeepStr '10', artifactNumToKeepStr '1'))
+        buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '1'))
         disableConcurrentBuilds()
     }
 
 
     triggers {
-        githubPush()   Trigger on GitHub webhook
+        githubPush()  // Trigger on GitHub webhook
     }
 
     parameters {
-        choice(name 'XUMLC', choices ['jarfilesxumlc-7.20.0.jar'], description 'Location of the xUML Compiler')
-        choice(name 'REGTEST', choices ['jarfilesRegTestRunner-8.10.5.jar'], description 'Location of the Regression Test Runner')
-        string(name 'BRIDGE_HOST', defaultValue 'ec2-52-74-183-0.ap-southeast-1.compute.amazonaws.com', description 'Bridge host address')
-        string(name 'BRIDGE_USER', defaultValue 'jprocero', description 'Bridge username')
-        password(name 'BRIDGE_PASSWORD', defaultValue 'jprocero', description 'Bridge password')
-        string(name 'BRIDGE_PORT', defaultValue '11165', description 'Bridge port')
-        string(name 'CONTROL_PORT', defaultValue '21179', description 'Control port')
+        choice(name: 'XUMLC', choices: ['jarfiles/xumlc-7.20.0.jar'], description: 'Location of the xUML Compiler')
+        choice(name: 'REGTEST', choices: ['jarfiles/RegTestRunner-8.10.5.jar'], description: 'Location of the Regression Test Runner')
+        string(name: 'BRIDGE_HOST', defaultValue: 'ec2-52-74-183-0.ap-southeast-1.compute.amazonaws.com', description: 'Bridge host address')
+        string(name: 'BRIDGE_USER', defaultValue: 'jprocero', description: 'Bridge username')
+        password(name: 'BRIDGE_PASSWORD', defaultValue: 'jprocero', description: 'Bridge password')
+        string(name: 'BRIDGE_PORT', defaultValue: '11165', description: 'Bridge port')
+        string(name: 'CONTROL_PORT', defaultValue: '21179', description: 'Control port')
     }
 
 
@@ -29,86 +29,86 @@ pipeline {
         stage('Build') {
             steps {
                 dir('.') {
-                    bat 
-                        java -jar ${params.XUMLC} -uml umlBuilderUML.xml
-                        if errorlevel 1 exit b 1
+                    bat """
+                        java -jar ${params.XUMLC} -uml uml/BuilderUML.xml
+                        if errorlevel 1 exit /b 1
                         echo Build completed successfully
-                        dir repositoryBuilderUML.rep
-                    
-                    archiveArtifacts artifacts 'repositoryBuilderUML.rep'
+                        dir repository\\BuilderUML\\*.rep
+                    """
+                    archiveArtifacts artifacts: 'repository/BuilderUML/*.rep'
                 }
             }
         }
          stage('Deploy') {
             steps {
                 dir('.') {
-                    bat 
+                    bat """
                         echo Checking for repository files...
                        
-                        if not exist repositoryBuilderUMLregtestlatest.rep (
-                            echo ERROR regtestlatest.rep not found!
-                            exit b 1
+                        if not exist repository\\BuilderUML\\regtestlatest.rep (
+                            echo ERROR: regtestlatest.rep not found!
+                            exit /b 1
                         )
                          
                         echo All repository files found, starting deployment...
                         echo First, stopping any existing instance...
-                        npx e2e-bridge-cli stop regtestlatest -h ${params.BRIDGE_HOST} -u ${params.BRIDGE_USER} -P ${params.BRIDGE_PASSWORD}  echo No existing instance to stop
+                        npx e2e-bridge-cli stop regtestlatest -h ${params.BRIDGE_HOST} -u ${params.BRIDGE_USER} -P ${params.BRIDGE_PASSWORD} || echo "No existing instance to stop"
                         echo Now deploying with startup option...
-                        npx e2e-bridge-cli deploy repositoryBuilderUMLregtestlatest.rep -h ${params.BRIDGE_HOST} -u ${params.BRIDGE_USER} -P ${params.BRIDGE_PASSWORD} -o startup
+                        npx e2e-bridge-cli deploy repository/BuilderUML/regtestlatest.rep -h ${params.BRIDGE_HOST} -u ${params.BRIDGE_USER} -P ${params.BRIDGE_PASSWORD} -o startup
                         
-                    
+                    """
                 }
             }
         }
         stage('List Test Suites') {
             steps {
                 dir('regressiontest') {
-                    bat 
+                    bat """
                         echo Listing available test suites...
                         java -jar ${params.REGTEST} -project . -list
                         echo.
                         echo Checking project structure...
-                        dir s testsuite
+                        dir /s testsuite
                         echo.
                         echo Checking if testsuite.xml exists...
-                        if exist testsuitetestsuite.xml (
+                        if exist testsuite\\testsuite.xml (
                             echo testsuite.xml found
-                            type testsuitetestsuite.xml  findstr testcase
+                            type testsuite\\testsuite.xml | findstr "testcase"
                         ) else (
                             echo testsuite.xml not found
                         )
-                    
+                    """
                 }
             }
         }
         stage('Test') {
             steps {
                 dir('.') {
-                    bat 
+                    bat """
                         echo Starting regression tests...
-                        echo Using RegTest jar ${params.REGTEST}
+                        echo Using RegTest jar: ${params.REGTEST}
                         
                         echo Checking if regtest jar exists...
-                        if not exist ${params.REGTEST} (
-                            echo ERROR RegTest jar not found at ${params.REGTEST}
-                            exit b 1
+                        if not exist "${params.REGTEST}" (
+                            echo ERROR: RegTest jar not found at ${params.REGTEST}
+                            exit /b 1
                         )
                         
                         echo Checking if test cases exist...
-                        if not exist regressiontesttestsuitetestsuite.xml (
-                            echo ERROR Test cases not found in regressiontest directory
-                            echo Please ensure regressiontesttestsuitetestsuite.xml exists
-                            exit b 1
+                        if not exist "regressiontest\\testsuite\\testsuite.xml" (
+                            echo ERROR: Test cases not found in regressiontest directory
+                            echo Please ensure regressiontest/testsuite/testsuite.xml exists
+                            exit /b 1
                         )
                         
                         echo Starting regression tests...
-                        echo Test configuration
-                        echo - Project .
-                        echo - Host ${params.BRIDGE_HOST}
-                        echo - Port ${params.BRIDGE_PORT}
-                        echo - Control Port ${params.CONTROL_PORT}
-                        echo - Username ${params.BRIDGE_USER}
-                        echo - Note RegTestRunner will run all available test suites in the project
+                        echo Test configuration:
+                        echo - Project: .
+                        echo - Host: ${params.BRIDGE_HOST}
+                        echo - Port: ${params.BRIDGE_PORT}
+                        echo - Control Port: ${params.CONTROL_PORT}
+                        echo - Username: ${params.BRIDGE_USER}
+                        echo - Note: RegTestRunner will run all available test suites in the project
                         
                         echo.
                         echo Checking available test suites...
@@ -116,16 +116,16 @@ pipeline {
                         
                         echo.
                         echo Running all available regression tests...
-                        echo Command java -jar ${params.REGTEST} -project . -host ${params.BRIDGE_HOST} -port ${params.BRIDGE_PORT} -username ${params.BRIDGE_USER} -password ${params.BRIDGE_PASSWORD} -controlport ${params.CONTROL_PORT} -logfile regressiontestresult.xml
-                        java -jar ${params.REGTEST} -project . -host ${params.BRIDGE_HOST} -port ${params.BRIDGE_PORT} -username ${params.BRIDGE_USER} -password ${params.BRIDGE_PASSWORD} -controlport ${params.CONTROL_PORT} -logfile regressiontestresult.xml
+                        echo Command: java -jar ${params.REGTEST} -project . -host ${params.BRIDGE_HOST} -port ${params.BRIDGE_PORT} -username ${params.BRIDGE_USER} -password ${params.BRIDGE_PASSWORD} -controlport ${params.CONTROL_PORT} -logfile regressiontest/result.xml
+                        java -jar ${params.REGTEST} -project . -host ${params.BRIDGE_HOST} -port ${params.BRIDGE_PORT} -username ${params.BRIDGE_USER} -password ${params.BRIDGE_PASSWORD} -controlport ${params.CONTROL_PORT} -logfile regressiontest/result.xml
                         
                         echo.
                         echo Checking if result.xml was created...
-                        if exist regressiontestresult.xml (
-                            echo result.xml found, displaying contents
-                            type regressiontestresult.xml
+                        if exist regressiontest\\result.xml (
+                            echo result.xml found, displaying contents:
+                            type regressiontest\\result.xml
                         ) else (
-                            echo ERROR result.xml was not created!
+                            echo ERROR: result.xml was not created!
                         )
                         
                         if errorlevel 1 (
@@ -133,45 +133,45 @@ pipeline {
                         ) else (
                             echo Tests completed successfully - exit code 0
                         )
-                    
+                    """
                 }
             }
             post {
                 always {
                     script {
-                        if (fileExists('regressiontestresult.xml')) {
-                            def resultContent = readFile('regressiontestresult.xml')
-                            echo Processing test results...
+                        if (fileExists('regressiontest/result.xml')) {
+                            def resultContent = readFile('regressiontest/result.xml')
+                            echo "Processing test results..."
                             
-                             Check if we have actual test results
-                            if (resultContent.contains('tests=0')  resultContent.contains('testsuite name=')) {
-                                echo No test results found in result.xml - this may indicate test configuration issues
-                                echo Result content ${resultContent}
-                                echo This usually means the RegTestRunner couldn't find or execute any tests
+                            // Check if we have actual test results
+                            if (resultContent.contains('tests="0"') || resultContent.contains('testsuite name=""')) {
+                                echo "No test results found in result.xml - this may indicate test configuration issues"
+                                echo "Result content: ${resultContent}"
+                                echo "This usually means the RegTestRunner couldn't find or execute any tests"
                             } else {
-                                echo Test results found and processed successfully
-                                echo Result content ${resultContent}
+                                echo "Test results found and processed successfully"
+                                echo "Result content: ${resultContent}"
                             }
                             
-                             Always publish results for Jenkins reporting
-                            junit 'regressiontestresult.xml'
-                            archiveArtifacts artifacts 'regressiontestresult.xml'
+                            // Always publish results for Jenkins reporting
+                            junit 'regressiontest/result.xml'
+                            archiveArtifacts artifacts: 'regressiontest/result.xml'
                             
-                             Also archive test case files for debugging
-                            archiveArtifacts artifacts 'regressiontest.$output'
+                            // Also archive test case files for debugging
+                            archiveArtifacts artifacts: 'regressiontest/.$output/**/*'
                             
                         } else {
-                            echo No test results file found - this indicates a test execution problem
-                             Create a failure result for Jenkins
-                            writeFile file 'regressiontestresult.xml', text '''xml version=1.0 encoding=UTF-8
-testsuites
-   testsuite name=BuilderUML Regression Tests tests=1 failures=1 errors=0 skipped=0
-      testcase name=TestExecutionFailure classname=RegressionTest
-         failure message=Test execution failed - result.xml was not generated
-      testcase
-   testsuites
-testsuites'''
-                            junit 'regressiontestresult.xml'
+                            echo "No test results file found - this indicates a test execution problem"
+                            // Create a failure result for Jenkins
+                            writeFile file: 'regressiontest/result.xml', text: '''<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+   <testsuite name="BuilderUML Regression Tests" tests="1" failures="1" errors="0" skipped="0">
+      <testcase name="TestExecutionFailure" classname="RegressionTest">
+         <failure message="Test execution failed - result.xml was not generated"/>
+      </testcase>
+   </testsuites>
+</testsuites>'''
+                            junit 'regressiontest/result.xml'
                         }
                     }
                 }
