@@ -26,22 +26,7 @@ pipeline {
 
      
     stages {
-        stage('Build') {
-            steps {
-                dir('.') {
-                    bat """
-                        echo Building with control port ${params.CONTROL_PORT}...
-                        java -jar ${params.XUMLC} -uml uml/BuilderUML.xml
-                        if errorlevel 1 exit /b 1
-                        echo Build completed successfully with control port ${params.CONTROL_PORT}
-                        echo Verifying repository files...
-                        dir repository\\BuilderUML\\*.rep
-                        echo Control port ${params.CONTROL_PORT} configured in build
-                    """
-                    archiveArtifacts artifacts: 'repository/BuilderUML/*.rep'
-                }
-            }
-        }
+        
          stage('Deploy') {
             steps {
                 dir('.') {
