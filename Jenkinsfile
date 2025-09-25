@@ -13,7 +13,7 @@ pipeline {
     }
 
     triggers {
-        pollSCM('H/5 * * * *')  // Poll GitHub every 5 minutes
+        githubPush()  // Trigger on GitHub push
     }
 
     parameters {
