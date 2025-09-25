@@ -589,7 +589,7 @@
       <ownedMember name="Component View" xmi:id="2071638018|_18_0_6_f4d0365_1753839490615_807677_13916" xmi:type="uml:Package">
          <ownedMember name="Composites" xmi:id="2071638018|_18_0_6_f4d0365_1753839490742_161846_13951" xmi:type="uml:Package">
             <ownedMember name="regtestlatest" xmi:id="2071638018|_18_0_6_f4d0365_1753839490742_356278_13950" xmi:type="uml:Component">
-               <ebp:E2EConfiguration base_Component="2071638018|_18_0_6_f4d0365_1753839490742_356278_13950" category="Training2025" classToXMLDefaultRootName="Default" controlPort="21179" killJVMThreadsOnShutdown="true" version="0.0.1" wsdlPerService="true" xmi:id="2071638018|_18_0_6_f4d0365_1753839490742_323740_13953"/>
+               <ebp:E2EConfiguration base_Component="2071638018|_18_0_6_f4d0365_1753839490742_356278_13950" category="Training2025" classToXMLDefaultRootName="Default" controlPort="21178" killJVMThreadsOnShutdown="true" version="0.0.1" wsdlPerService="true" xmi:id="2071638018|_18_0_6_f4d0365_1753839490742_323740_13953"/>
                <ownedMember name="BuilderUMLService" xmi:id="2071638018|_18_0_6_f4d0365_1753839490742_809534_13966" xmi:type="uml:Component">
                   <ebp:E2ESOAPService authenticationMode="None" base_Component="2071638018|_18_0_6_f4d0365_1753839490742_809534_13966" port="11165" xmi:id="2071638018|_18_0_6_f4d0365_1753839490758_313994_13967"/>
                   <realization realizingClassifier="2071638018|_18_0_6_f4d0365_1753807809635_351858_13818" xmi:id="2071638018|_18_0_6_f4d0365_1753839490758_507465_13972" xmi:type="uml:ComponentRealization">
