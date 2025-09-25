@@ -845,7 +845,7 @@
                <ebp:E2EConfiguration base_Component="2071638018|_18_0_6_f4d0365_1753839490742_356278_13950"
                                      category="Training2025"
                                      classToXMLDefaultRootName="Default"
-                                     controlPort="21178"
+                                     controlPort="21179"
                                      killJVMThreadsOnShutdown="true"
                                      version="0.0.1"
                                      wsdlPerService="true"
