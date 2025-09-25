@@ -52,7 +52,12 @@ pipeline {
                          
                         echo All repository files found, starting deployment...
                         echo First, stopping any existing instance...
-                        npx e2e-bridge-cli stop regtestlatest -h ${params.BRIDGE_HOST} -u ${params.BRIDGE_USER} -P ${params.BRIDGE_PASSWORD} || echo "No existing instance to stop"
+                        npx e2e-bridge-cli stop regtestlatest -h ${params.BRIDGE_HOST} -u ${params.BRIDGE_USER} -P ${params.BRIDGE_PASSWORD}
+                        if errorlevel 1 (
+                            echo No existing instance to stop, continuing with deployment...
+                        ) else (
+                            echo Existing instance stopped successfully
+                        )
                         echo Now deploying with startup option...
                         npx e2e-bridge-cli deploy repository/BuilderUML/regtestlatest.rep -h ${params.BRIDGE_HOST} -u ${params.BRIDGE_USER} -P ${params.BRIDGE_PASSWORD} -o startup
                         
