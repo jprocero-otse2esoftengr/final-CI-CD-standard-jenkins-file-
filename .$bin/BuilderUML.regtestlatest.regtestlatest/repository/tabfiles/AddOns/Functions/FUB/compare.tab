@@ -6,4 +6,10 @@
       <Op>EQ</Op>
       <Right>value...f2071638018h-1304393832.1_3</Right>
    </Function>
+   <Function>
+      <ID>compareEq...f2071638018h-1779724044.0_1</ID>
+      <Left>0.3</Left>
+      <Op>EQ</Op>
+      <Right>value...f2071638018h-1779724044.1_3</Right>
+   </Function>
 </Functions>
