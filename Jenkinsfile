@@ -23,7 +23,6 @@ pipeline {
         string(name: 'BRIDGE_USER', defaultValue: 'jprocero', description: 'Bridge username')
         password(name: 'BRIDGE_PASSWORD', defaultValue: 'jprocero', description: 'Bridge password')
         string(name: 'BRIDGE_PORT', defaultValue: '11165', description: 'Bridge port')
-        string(name: 'CONTROL_PORT', defaultValue: '21176', description: 'Control port')
     }
 
 
@@ -33,7 +32,6 @@ pipeline {
             steps {
                 dir('.') {
                     bat """
-                        echo Building with control port: ${CONTROL_PORT}
                         java -jar ${XUMLC} -uml uml/BuilderUML.xml
                         if errorlevel 1 exit /b 1
                         echo Build completed successfully
@@ -55,8 +53,7 @@ pipeline {
                         )
                          
                         echo All repository files found, starting deployment...
-                        echo Deploying with control port: ${CONTROL_PORT}
-                        npx e2e-bridge-cli deploy repository/BuilderUML/regtestlatest.rep -h ${BRIDGE_HOST} -u ${BRIDGE_USER} -P ${BRIDGE_PASSWORD} -p ${BRIDGE_PORT} -c ${CONTROL_PORT} -o overwrite
+                        npx e2e-bridge-cli deploy repository/BuilderUML/regtestlatest.rep -h ${BRIDGE_HOST} -u ${BRIDGE_USER} -P ${BRIDGE_PASSWORD} -o overwrite
                         
                     """
                 }
@@ -108,7 +105,6 @@ pipeline {
                         echo - Project: .
                         echo - Host: ${BRIDGE_HOST}
                         echo - Port: ${BRIDGE_PORT}
-                        echo - Control Port: ${CONTROL_PORT}
                         echo - Username: ${BRIDGE_USER}
                         echo - Note: RegTestRunner will run all available test suites in the project
                         
