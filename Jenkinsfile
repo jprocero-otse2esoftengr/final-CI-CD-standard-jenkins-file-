@@ -54,6 +54,7 @@ pipeline {
                         )
                          
                         echo All repository files found, starting deployment...
+                        echo DEBUG: Control port configured as ${params.CONTROL_PORT}
                         echo Deploying with overwrite option...
                         npx e2e-bridge-cli deploy repository/BuilderUML/regtestlatest.rep -h ${params.BRIDGE_HOST} -u ${params.BRIDGE_USER} -P ${params.BRIDGE_PASSWORD} -o overwrite
                         echo Stopping any existing instance...
@@ -114,6 +115,11 @@ pipeline {
                         echo - Control Port: ${params.CONTROL_PORT}
                         echo - Username: ${params.BRIDGE_USER}
                         echo - Note: RegTestRunner will run all available test suites in the project
+                        
+                        echo.
+                        echo DEBUG: Checking bridge connection...
+                        echo DEBUG: Testing connection to ${params.BRIDGE_HOST}:${params.BRIDGE_PORT}
+                        echo DEBUG: Control port will be: ${params.CONTROL_PORT}
                         
                         echo.
                         echo Checking available test suites...
