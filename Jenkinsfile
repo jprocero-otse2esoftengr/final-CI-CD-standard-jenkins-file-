@@ -20,7 +20,7 @@ pipeline {
         string(name: 'BRIDGE_USER', defaultValue: 'jprocero', description: 'Bridge username')
         password(name: 'BRIDGE_PASSWORD', defaultValue: 'jprocero', description: 'Bridge password')
         string(name: 'BRIDGE_PORT', defaultValue: '11165', description: 'Bridge port')
-        string(name: 'CONTROL_PORT', defaultValue: '21179', description: 'Control port')
+        string(name: 'CONTROL_PORT', defaultValue: '21178', description: 'Control port')
     }
 
 
@@ -55,11 +55,10 @@ pipeline {
                          
                         echo All repository files found, starting deployment...
                         echo Deploying with overwrite option...
-                        npx e2e-bridge-cli deploy repository/BuilderUML/regtestlatest.rep -h ${params.BRIDGE_HOST} -u ${params.BRIDGE_USER} -P ${params.BRIDGE_PASSWORD} -o overwrite
-                        echo Stopping any existing instance...
+                       
                         npx e2e-bridge-cli stop regtestlatest -h ${params.BRIDGE_HOST} -u ${params.BRIDGE_USER} -P ${params.BRIDGE_PASSWORD} 2>nul || echo "No existing instance to stop"
-                        echo Starting the service...
-                        npx e2e-bridge-cli start regtestlatest -h ${params.BRIDGE_HOST} -u ${params.BRIDGE_USER} -P ${params.BRIDGE_PASSWORD}
+                        
+                       
                         
                     """
                 }
