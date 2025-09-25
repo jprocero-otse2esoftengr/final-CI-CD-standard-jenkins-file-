@@ -16,10 +16,6 @@
       <Set source="1" target="0"
            targetDataItem="urn:Services.NameOfService1.Classes.outputClass"/>
    </Mapping>
-   <Mapping id="om@2071638018h1185220296">
-      <Set source="1" target="0"
-           targetDataItem="urn:Services.NameOfService1.Classes.outputClass"/>
-   </Mapping>
    <Mapping id="im@2071638018h-576952005">
       <Set source="0" target="0"
            targetDataItem="urn:Services.NameOfService1.Classes.inputClass"/>
@@ -58,16 +54,6 @@
       <Set source="value...f2071638018h1625116305.2_1" statement="3" target="1.9"
            targetDataItem="urn:Services.NameOfService1.Classes.outputClass"/>
       <Set source="value...f2071638018h1625116305.3_1" statement="4" target="1.10"
-           targetDataItem="urn:Services.NameOfService1.Classes.outputClass"/>
-   </Mapping>
-   <Mapping id="sm2071638018h1185220296">
-      <Set source="create...f2071638018h2039715482.0_1" statement="1" target="1"
-           targetDataItem="urn:Services.NameOfService1.Classes.outputClass"/>
-      <Set source="value...f2071638018h2039715482.1_1" statement="2" target="1.8"
-           targetDataItem="urn:Services.NameOfService1.Classes.outputClass"/>
-      <Set source="value...f2071638018h2039715482.2_1" statement="3" target="1.9"
-           targetDataItem="urn:Services.NameOfService1.Classes.outputClass"/>
-      <Set source="value...f2071638018h2039715482.3_1" statement="4" target="1.10"
            targetDataItem="urn:Services.NameOfService1.Classes.outputClass"/>
    </Mapping>
    <Mapping id="sm2071638018h-576952005">
