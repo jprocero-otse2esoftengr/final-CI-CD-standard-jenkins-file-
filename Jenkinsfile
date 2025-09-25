@@ -8,9 +8,6 @@ pipeline {
         disableConcurrentBuilds()
     }
 
-    environment {
-        REGTEST_JAR = 'jarfiles/RegTestRunner-8.10.5.jar'
-    }
 
     triggers {
         githubPush()  // Trigger on GitHub webhook
@@ -32,7 +29,7 @@ pipeline {
             steps {
                 dir('.') {
                     bat """
-                        java -jar ${XUMLC} -uml uml/BuilderUML.xml
+                        java -jar ${params.XUMLC} -uml uml/BuilderUML.xml
                         if errorlevel 1 exit /b 1
                         echo Build completed successfully
                         dir repository\\BuilderUML\\*.rep
@@ -110,12 +107,12 @@ pipeline {
                         
                         echo.
                         echo Checking available test suites...
-                        java -jar "${REGTEST_JAR}" -project . -host ${params.BRIDGE_HOST} -port ${params.BRIDGE_PORT} -username ${params.BRIDGE_USER} -password ${params.BRIDGE_PASSWORD} -controlport 21179 -list
+                        java -jar ${params.REGTEST} -project . -host ${params.BRIDGE_HOST} -port ${params.BRIDGE_PORT} -username ${params.BRIDGE_USER} -password ${params.BRIDGE_PASSWORD} -list
                         
                         echo.
                         echo Running all available regression tests...
-                        echo Command: java -jar "${REGTEST_JAR}" -project . -host ${params.BRIDGE_HOST} -port ${params.BRIDGE_PORT} -username ${params.BRIDGE_USER} -password ${params.BRIDGE_PASSWORD} -controlport 21179 -logfile regressiontest/result.xml
-                        java -jar "${REGTEST_JAR}" -project . -host ${params.BRIDGE_HOST} -port ${params.BRIDGE_PORT} -username ${params.BRIDGE_USER} -password ${params.BRIDGE_PASSWORD} -controlport 21179 -logfile regressiontest/result.xml
+                        echo Command: java -jar ${params.REGTEST} -project . -host ${params.BRIDGE_HOST} -port ${params.BRIDGE_PORT} -username ${params.BRIDGE_USER} -password ${params.BRIDGE_PASSWORD} -logfile regressiontest/result.xml
+                        java -jar ${params.REGTEST} -project . -host ${params.BRIDGE_HOST} -port ${params.BRIDGE_PORT} -username ${params.BRIDGE_USER} -password ${params.BRIDGE_PASSWORD} -logfile regressiontest/result.xml
                         
                         echo.
                         echo Checking if result.xml was created...
