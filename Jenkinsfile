@@ -33,6 +33,7 @@ pipeline {
             steps {
                 dir('.') {
                     bat """
+                        echo Building with control port: ${CONTROL_PORT}
                         java -jar ${XUMLC} -uml uml/BuilderUML.xml
                         if errorlevel 1 exit /b 1
                         echo Build completed successfully
@@ -54,7 +55,8 @@ pipeline {
                         )
                          
                         echo All repository files found, starting deployment...
-                        npx e2e-bridge-cli deploy repository/BuilderUML/regtestlatest.rep -h ${BRIDGE_HOST} -u ${BRIDGE_USER} -P ${BRIDGE_PASSWORD} -o overwrite
+                        echo Deploying with control port: ${CONTROL_PORT}
+                        npx e2e-bridge-cli deploy repository/BuilderUML/regtestlatest.rep -h ${BRIDGE_HOST} -u ${BRIDGE_USER} -P ${BRIDGE_PASSWORD} -p ${BRIDGE_PORT} -c ${CONTROL_PORT} -o overwrite
                         
                     """
                 }
