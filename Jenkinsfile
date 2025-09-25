@@ -61,7 +61,7 @@ pipeline {
                 dir('regressiontest') {
                     bat """
                         echo Listing available test suites...
-                        java -jar ${REGTEST_JAR} -project . -list
+                        java -jar ${params.REGTEST} -project . -list
                         echo.
                         echo Checking project structure...
                         dir /s testsuite
@@ -82,11 +82,11 @@ pipeline {
                 dir('.') {
                     bat """
                         echo Starting regression tests...
-                        echo Using RegTest jar: ${REGTEST_JAR}
+                        echo Using RegTest jar: ${params.REGTEST}
                         
                         echo Checking if regtest jar exists...
-                        if not exist "${REGTEST_JAR}" (
-                            echo ERROR: RegTest jar not found at ${REGTEST_JAR}
+                        if not exist "${params.REGTEST}" (
+                            echo ERROR: RegTest jar not found at ${params.REGTEST}
                             exit /b 1
                         )
                         
