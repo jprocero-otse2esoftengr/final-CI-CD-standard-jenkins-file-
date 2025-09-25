@@ -34,6 +34,21 @@
       <Value>true</Value>
    </Function>
    <Function>
+      <ID>value...f2071638018h2039715482.1_1</ID>
+      <ItemType>String</ItemType>
+      <Value>POSITION BLOCKED</Value>
+   </Function>
+   <Function>
+      <ID>value...f2071638018h2039715482.2_1</ID>
+      <ItemType>String</ItemType>
+      <Value>INTERN IS NOT ALLOWED IN THIS AREA</Value>
+   </Function>
+   <Function>
+      <ID>value...f2071638018h2039715482.3_1</ID>
+      <ItemType>Boolean</ItemType>
+      <Value>true</Value>
+   </Function>
+   <Function>
       <ID>value...f2071638018h-310306500.1_1</ID>
       <ItemType>Boolean</ItemType>
       <Value>true</Value>
@@ -47,6 +62,11 @@
       <ID>value...f2071638018h-1304393832.1_3</ID>
       <ItemType>String</ItemType>
       <Value>rocero</Value>
+   </Function>
+   <Function>
+      <ID>value...f2071638018h-1779724044.1_3</ID>
+      <ItemType>String</ItemType>
+      <Value>intern</Value>
    </Function>
    <Function>
       <ID>value...urn:Base_Components.Add_Ons.JMS.JMSBlobMessage.JMSPersistentDeliveryMode</ID>
