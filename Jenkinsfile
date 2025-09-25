@@ -20,7 +20,7 @@ pipeline {
         string(name: 'BRIDGE_USER', defaultValue: 'jprocero', description: 'Bridge username')
         password(name: 'BRIDGE_PASSWORD', defaultValue: 'jprocero', description: 'Bridge password')
         string(name: 'BRIDGE_PORT', defaultValue: '11165', description: 'Bridge port')
-        string(name: 'CONTROL_PORT', defaultValue: '21179', description: 'Control port')
+        string(name: 'CONTROL_PORT', defaultValue: '21178', description: 'Control port')
     }
 
 
