@@ -30,10 +30,13 @@ pipeline {
             steps {
                 dir('.') {
                     bat """
+                        echo Building with control port ${params.CONTROL_PORT}...
                         java -jar ${params.XUMLC} -uml uml/BuilderUML.xml
                         if errorlevel 1 exit /b 1
-                        echo Build completed successfully
+                        echo Build completed successfully with control port ${params.CONTROL_PORT}
+                        echo Verifying repository files...
                         dir repository\\BuilderUML\\*.rep
+                        echo Control port ${params.CONTROL_PORT} configured in build
                     """
                     archiveArtifacts artifacts: 'repository/BuilderUML/*.rep'
                 }
@@ -50,7 +53,9 @@ pipeline {
                             exit /b 1
                         )
                          
-                       
+                        echo All repository files found, starting deployment...
+                        echo First, stopping any existing instance...
+                        npx e2e-bridge-cli stop regtestlatest -h ${params.BRIDGE_HOST} -u ${params.BRIDGE_USER} -P ${params.BRIDGE_PASSWORD} || echo "No existing instance to stop"
                         echo Now deploying with startup option...
                         npx e2e-bridge-cli deploy repository/BuilderUML/regtestlatest.rep -h ${params.BRIDGE_HOST} -u ${params.BRIDGE_USER} -P ${params.BRIDGE_PASSWORD} -o startup
                         
