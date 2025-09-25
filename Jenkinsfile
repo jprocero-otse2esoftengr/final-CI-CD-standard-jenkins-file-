@@ -63,6 +63,9 @@ pipeline {
                         npx e2e-bridge-cli deploy repository/BuilderUML/regtestlatest.rep -h ${params.BRIDGE_HOST} -u ${params.BRIDGE_USER} -P ${params.BRIDGE_PASSWORD} -o overwrite
                         echo Starting the service...
                         npx e2e-bridge-cli start regtestlatest -h ${params.BRIDGE_HOST} -u ${params.BRIDGE_USER} -P ${params.BRIDGE_PASSWORD}
+                        echo Waiting for service to fully initialize...
+                        timeout /t 10 /nobreak >nul
+                        echo Service should now be ready with control port ${params.CONTROL_PORT}
                         
                     """
                 }
@@ -120,12 +123,12 @@ pipeline {
                         
                         echo.
                         echo Checking available test suites...
-                        java -jar ${params.REGTEST} -project . -host ${params.BRIDGE_HOST} -port ${params.BRIDGE_PORT} -username ${params.BRIDGE_USER} -password ${params.BRIDGE_PASSWORD} -controlport ${params.CONTROL_PORT} -list
+                        java -jar ${params.REGTEST} -project . -host ${params.BRIDGE_HOST} -port ${params.BRIDGE_PORT} -username ${params.BRIDGE_USER} -password ${params.BRIDGE_PASSWORD} -list
                         
                         echo.
                         echo Running all available regression tests...
-                        echo Command: java -jar ${params.REGTEST} -project . -host ${params.BRIDGE_HOST} -port ${params.BRIDGE_PORT} -username ${params.BRIDGE_USER} -password ${params.BRIDGE_PASSWORD} -controlport ${params.CONTROL_PORT} -logfile regressiontest/result.xml
-                        java -jar ${params.REGTEST} -project . -host ${params.BRIDGE_HOST} -port ${params.BRIDGE_PORT} -username ${params.BRIDGE_USER} -password ${params.BRIDGE_PASSWORD} -controlport ${params.CONTROL_PORT} -logfile regressiontest/result.xml
+                        echo Command: java -jar ${params.REGTEST} -project . -host ${params.BRIDGE_HOST} -port ${params.BRIDGE_PORT} -username ${params.BRIDGE_USER} -password ${params.BRIDGE_PASSWORD} -logfile regressiontest/result.xml
+                        java -jar ${params.REGTEST} -project . -host ${params.BRIDGE_HOST} -port ${params.BRIDGE_PORT} -username ${params.BRIDGE_USER} -password ${params.BRIDGE_PASSWORD} -logfile regressiontest/result.xml
                         
                         echo.
                         echo Checking if result.xml was created...
