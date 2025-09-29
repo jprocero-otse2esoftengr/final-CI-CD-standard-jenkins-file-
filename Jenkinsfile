@@ -132,17 +132,12 @@ pipeline {
                             echo ANALYZING TEST RESULTS...
                             echo ========================================
                             
-                            REM Count total tests
-                            for /f "tokens=2 delims==\"" %%i in ('findstr "tests=" regressiontest\\result.xml') do (
-                                echo Total Tests: %%i
-                            )
+                            echo.
+                            echo TEST SUMMARY:
+                            echo ========================================
+                            findstr "tests=" regressiontest\\result.xml
+                            findstr "errors=" regressiontest\\result.xml
                             
-                            REM Count errors
-                            for /f "tokens=2 delims==\"" %%i in ('findstr "errors=" regressiontest\\result.xml') do (
-                                echo Errors: %%i
-                            )
-                            
-                            REM Show individual test results
                             echo.
                             echo INDIVIDUAL TEST RESULTS:
                             echo ========================================
