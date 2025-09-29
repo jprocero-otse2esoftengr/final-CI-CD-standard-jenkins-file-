@@ -225,7 +225,7 @@
                                 xmi:type="uml:LiteralUnlimitedNatural"/>
                      </edge>
                      <edge source="2071638018|_18_0_6_f4d0365_1758100219799_637533_13958"
-                           target="2071638018|_18_0_6_f4d0365_1758145986299_38502_14463"
+                           target="2071638018|_18_0_6_f4d0365_1758141684081_887819_14342"
                            visibility="public"
                            xmi:id="2071638018|_18_0_6_f4d0365_1758100231886_76423_13976"
                            xmi:type="uml:ControlFlow">
@@ -266,6 +266,69 @@
                            xmi:id="2071638018|_18_0_6_f4d0365_1758137034967_283819_13958"
                            xmi:type="uml:ControlFlow">
                         <weight value="1" xmi:id="2071638018|_18_0_6_f4d0365_1758137034968_123260_13959"
+                                xmi:type="uml:LiteralUnlimitedNatural"/>
+                     </edge>
+                     <edge source="2071638018|_18_0_6_f4d0365_1758141684081_887819_14342"
+                           target="2071638018|_18_0_6_f4d0365_1758145986299_38502_14463"
+                           visibility="public"
+                           xmi:id="2071638018|_18_0_6_f4d0365_1758141698442_313164_14346"
+                           xmi:type="uml:ControlFlow">
+                        <guard xmi:id="2071638018|_18_0_6_f4d0365_1758145103721_595926_14432"
+                               xmi:type="uml:OpaqueExpression">
+                           <EALScript>
+                              <EALStatement>
+                                 <Accessor>
+                                    <AccessorPart>
+                                       <EALName value="else"/>
+                                    </AccessorPart>
+                                 </Accessor>
+                              </EALStatement>
+                           </EALScript>
+                        </guard>
+                        <weight value="1" xmi:id="2071638018|_18_0_6_f4d0365_1758141698442_775302_14347"
+                                xmi:type="uml:LiteralUnlimitedNatural"/>
+                     </edge>
+                     <edge source="2071638018|_18_0_6_f4d0365_1758141684081_887819_14342"
+                           target="2071638018|_18_0_6_f4d0365_1758141895010_90349_14352"
+                           visibility="public"
+                           xmi:id="2071638018|_18_0_6_f4d0365_1758141895020_391871_14354"
+                           xmi:type="uml:ControlFlow">
+                        <guard xmi:id="2071638018|_18_0_6_f4d0365_1758145002335_44547_14397"
+                               xmi:type="uml:OpaqueExpression">
+                           <EALScript>
+                              <EALStatement at="1" start="1" startLine="1">
+                                 <RelationalExpression id="f2071638018h-1779724044.0_1" start="1" startLine="1">
+                                    <Accessor start="1" startLine="1">
+                                       <AccessorPart start="1" startLine="1">
+                                          <EALName start="1" startLine="1" value="request"/>
+                                       </AccessorPart>
+                                       <AccessorPart start="9" startLine="1">
+                                          <EALName start="9" startLine="1" value="position"/>
+                                       </AccessorPart>
+                                    </Accessor>
+                                    <Eq start="18" startLine="1"/>
+                                    <EALString id="f2071638018h-1779724044.1_3" start="20" startLine="1" value="&#34;intern&#34;"/>
+                                 </RelationalExpression>
+                              </EALStatement>
+                           </EALScript>
+                        </guard>
+                        <weight value="1" xmi:id="2071638018|_18_0_6_f4d0365_1758141895020_211656_14355"
+                                xmi:type="uml:LiteralUnlimitedNatural"/>
+                     </edge>
+                     <edge source="2071638018|_18_0_6_f4d0365_1758141895010_90349_14352"
+                           target="2071638018|_18_0_6_f4d0365_1753810140590_140798_13860"
+                           visibility="public"
+                           xmi:id="2071638018|_18_0_6_f4d0365_1758142138501_160763_14389"
+                           xmi:type="uml:ObjectFlow">
+                        <weight value="1" xmi:id="2071638018|_18_0_6_f4d0365_1758142138501_114299_14390"
+                                xmi:type="uml:LiteralUnlimitedNatural"/>
+                     </edge>
+                     <edge source="2071638018|_18_0_6_f4d0365_1758141895010_90349_14352"
+                           target="2071638018|_18_0_6_f4d0365_1758145301201_35595_14445"
+                           visibility="public"
+                           xmi:id="2071638018|_18_0_6_f4d0365_1758145297382_243361_14442"
+                           xmi:type="uml:ControlFlow">
+                        <weight value="1" xmi:id="2071638018|_18_0_6_f4d0365_1758145297383_236875_14443"
                                 xmi:type="uml:LiteralUnlimitedNatural"/>
                      </edge>
                      <edge source="2071638018|_18_0_6_f4d0365_1758145986299_38502_14463"
@@ -318,6 +381,7 @@
                            xmi:type="uml:ActivityParameterNode">
                         <incoming xmi:idref="2071638018|_18_0_6_f4d0365_1753812023523_446395_14063"/>
                         <incoming xmi:idref="2071638018|_18_0_6_f4d0365_1758101554030_658898_14076"/>
+                        <incoming xmi:idref="2071638018|_18_0_6_f4d0365_1758142138501_160763_14389"/>
                         <incoming xmi:idref="2071638018|_18_0_6_f4d0365_1758146174313_821125_14522"/>
                      </node>
                      <node name="create responses" visibility="public"
@@ -554,6 +618,89 @@
                            xmi:type="uml:ActivityFinalNode">
                         <incoming xmi:idref="2071638018|_18_0_6_f4d0365_1758137034967_283819_13958"/>
                      </node>
+                     <node visibility="public"
+                           xmi:id="2071638018|_18_0_6_f4d0365_1758141684081_887819_14342"
+                           xmi:type="uml:DecisionNode">
+                        <incoming xmi:idref="2071638018|_18_0_6_f4d0365_1758100231886_76423_13976"/>
+                        <outgoing xmi:idref="2071638018|_18_0_6_f4d0365_1758141698442_313164_14346"/>
+                        <outgoing xmi:idref="2071638018|_18_0_6_f4d0365_1758141895020_391871_14354"/>
+                     </node>
+                     <node name="positionarea" visibility="public"
+                           xmi:id="2071638018|_18_0_6_f4d0365_1758141895010_90349_14352"
+                           xmi:type="uml:CallBehaviorAction">
+                        <ebp:ActionScript base_Action="2071638018|_18_0_6_f4d0365_1758141895010_90349_14352">
+                           <EALScript>
+                              <EALStatement at="1" start="1" startLine="1">
+                                 <CreateStatement id="f2071638018h2039715482.0_1" start="1" startLine="1">
+                                    <EALName value="response"/>
+                                 </CreateStatement>
+                              </EALStatement>
+                              <EALStatement at="2" start="1" startLine="2">
+                                 <AssignmentStatement start="1" startLine="2">
+                                    <Set start="1" startLine="2">
+                                       <Accessor start="5" startLine="2">
+                                          <AccessorPart start="5" startLine="2">
+                                             <EALName start="5" startLine="2" value="response"/>
+                                          </AccessorPart>
+                                          <AccessorPart start="14" startLine="2">
+                                             <EALName start="14" startLine="2" value="status"/>
+                                          </AccessorPart>
+                                       </Accessor>
+                                    </Set>
+                                    <To start="21" startLine="2">
+                                       <EALString id="f2071638018h2039715482.1_1" start="23" startLine="2"
+                                                  value="&#34;POSITION BLOCKED&#34;"/>
+                                    </To>
+                                 </AssignmentStatement>
+                              </EALStatement>
+                              <EALStatement at="3" start="1" startLine="3">
+                                 <AssignmentStatement start="1" startLine="3">
+                                    <Set start="1" startLine="3">
+                                       <Accessor start="5" startLine="3">
+                                          <AccessorPart start="5" startLine="3">
+                                             <EALName start="5" startLine="3" value="response"/>
+                                          </AccessorPart>
+                                          <AccessorPart start="14" startLine="3">
+                                             <EALName start="14" startLine="3" value="message"/>
+                                          </AccessorPart>
+                                       </Accessor>
+                                    </Set>
+                                    <To start="22" startLine="3">
+                                       <EALString id="f2071638018h2039715482.2_1" start="24" startLine="3"
+                                                  value="&#34;INTERN IS NOT ALLOWED IN THIS AREA&#34;"/>
+                                    </To>
+                                 </AssignmentStatement>
+                              </EALStatement>
+                              <EALStatement at="4" start="1" startLine="4">
+                                 <AssignmentStatement start="1" startLine="4">
+                                    <Set start="1" startLine="4">
+                                       <Accessor start="5" startLine="4">
+                                          <AccessorPart start="5" startLine="4">
+                                             <EALName start="5" startLine="4" value="response"/>
+                                          </AccessorPart>
+                                          <AccessorPart start="14" startLine="4">
+                                             <EALName start="14" startLine="4" value="blockedReached"/>
+                                          </AccessorPart>
+                                       </Accessor>
+                                    </Set>
+                                    <To start="29" startLine="4">
+                                       <EALBoolean id="f2071638018h2039715482.3_1" start="31" startLine="4">
+                                          <EALTrue start="31" startLine="4"/>
+                                       </EALBoolean>
+                                    </To>
+                                 </AssignmentStatement>
+                              </EALStatement>
+                           </EALScript>
+                        </ebp:ActionScript>
+                        <incoming xmi:idref="2071638018|_18_0_6_f4d0365_1758141895020_391871_14354"/>
+                        <outgoing xmi:idref="2071638018|_18_0_6_f4d0365_1758142138501_160763_14389"/>
+                        <outgoing xmi:idref="2071638018|_18_0_6_f4d0365_1758145297382_243361_14442"/>
+                     </node>
+                     <node visibility="public"
+                           xmi:id="2071638018|_18_0_6_f4d0365_1758145301201_35595_14445"
+                           xmi:type="uml:ActivityFinalNode">
+                        <incoming xmi:idref="2071638018|_18_0_6_f4d0365_1758145297382_243361_14442"/>
+                     </node>
                      <node name="validation" visibility="public"
                            xmi:id="2071638018|_18_0_6_f4d0365_1758145986299_38502_14463"
                            xmi:type="uml:CallBehaviorAction">
@@ -651,8 +798,8 @@
                               </EALStatement>
                            </EALScript>
                         </ebp:ActionScript>
+                        <incoming xmi:idref="2071638018|_18_0_6_f4d0365_1758141698442_313164_14346"/>
                         <incoming xmi:idref="2071638018|_18_0_6_f4d0365_1758146197182_430964_14542"/>
-                        <incoming xmi:idref="2071638018|_18_0_6_f4d0365_1758100231886_76423_13976"/>
                         <outgoing xmi:idref="2071638018|_18_0_6_f4d0365_1758145988544_349570_14475"/>
                         <outgoing xmi:idref="2071638018|_18_0_6_f4d0365_1758146174313_821125_14522"/>
                      </node>
