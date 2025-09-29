@@ -39,12 +39,7 @@ pipeline {
                         )
                          
                         echo All repository files found, starting deployment...
-                        echo Stopping existing service if running...
-                        npx e2e-bridge-cli stop regtestlatest -h ${params.BRIDGE_HOST} -u ${params.BRIDGE_USER} -P ${params.BRIDGE_PASSWORD} 2>nul || echo "No existing service to stop"
-                        echo Deploying service with overwrite...
                         npx e2e-bridge-cli deploy repository/BuilderUML/regtestlatest.rep -h ${params.BRIDGE_HOST} -u ${params.BRIDGE_USER} -P ${params.BRIDGE_PASSWORD} -o overwrite
-                        echo Starting the service...
-                        npx e2e-bridge-cli start regtestlatest -h ${params.BRIDGE_HOST} -u ${params.BRIDGE_USER} -P ${params.BRIDGE_PASSWORD}
                         
                     """
                 }
@@ -115,65 +110,18 @@ pipeline {
                         java -jar ${params.REGTEST} -project . -host ${params.BRIDGE_HOST} -port ${params.BRIDGE_PORT} -username ${params.BRIDGE_USER} -password ${params.BRIDGE_PASSWORD} -controlport ${params.CONTROL_PORT} -logfile regressiontest/result.xml
                         
                         echo.
-                        echo ========================================
-                        echo REGRESSION TEST RESULTS SUMMARY
-                        echo ========================================
-                        
+                        echo Checking if result.xml was created...
                         if exist regressiontest\\result.xml (
-                            echo.
-                            echo ✓ Test results file created successfully
-                            echo.
-                            echo DETAILED TEST RESULTS:
-                            echo ========================================
+                            echo result.xml found, displaying contents:
                             type regressiontest\\result.xml
-                            echo ========================================
-                            
-                            echo.
-                            echo ANALYZING TEST RESULTS...
-                            echo ========================================
-                            
-                            echo.
-                            echo TEST SUMMARY:
-                            echo ========================================
-                            findstr "tests=" regressiontest\\result.xml
-                            findstr "errors=" regressiontest\\result.xml
-                            
-                            echo.
-                            echo INDIVIDUAL TEST RESULTS:
-                            echo ========================================
-                            findstr "testcase" regressiontest\\result.xml
-                            
                         ) else (
-                            echo.
-                            echo ❌ ERROR: result.xml was not created!
-                            echo This indicates the RegTestRunner failed to execute tests
-                            echo.
-                            echo CHECKING FOR ERROR LOGS...
-                            if exist regressiontest\\*.log (
-                                echo Found log files:
-                                dir regressiontest\\*.log
-                                echo.
-                                echo Latest log content:
-                                for %%f in (regressiontest\\*.log) do (
-                                    echo ========================================
-                                    echo Log file: %%f
-                                    echo ========================================
-                                    type "%%f"
-                                    echo ========================================
-                                )
-                            ) else (
-                                echo No log files found in regressiontest directory
-                            )
+                            echo ERROR: result.xml was not created!
                         )
                         
-                        echo.
-                        echo ========================================
                         if errorlevel 1 (
-                            echo ❌ TESTS COMPLETED WITH ERRORS - Exit Code: 1
-                            echo ========================================
+                            echo Tests completed with errors - exit code 1
                         ) else (
-                            echo ✅ TESTS COMPLETED SUCCESSFULLY - Exit Code: 0
-                            echo ========================================
+                            echo Tests completed successfully - exit code 0
                         )
                     """
                 }
