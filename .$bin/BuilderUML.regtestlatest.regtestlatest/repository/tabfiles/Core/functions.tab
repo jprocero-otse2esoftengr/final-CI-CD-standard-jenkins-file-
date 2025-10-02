@@ -41,6 +41,22 @@
       <Type>FUC_VALUE</Type>
    </Function>
    <Function>
+      <ID>create...f2071638018h2039715482.0_1</ID>
+      <Type>FUC_ITEM</Type>
+   </Function>
+   <Function>
+      <ID>value...f2071638018h2039715482.1_1</ID>
+      <Type>FUC_VALUE</Type>
+   </Function>
+   <Function>
+      <ID>value...f2071638018h2039715482.2_1</ID>
+      <Type>FUC_VALUE</Type>
+   </Function>
+   <Function>
+      <ID>value...f2071638018h2039715482.3_1</ID>
+      <Type>FUC_VALUE</Type>
+   </Function>
+   <Function>
       <ID>create...f2071638018h-310306500.0_1</ID>
       <Type>FUC_ITEM</Type>
    </Function>
@@ -58,6 +74,14 @@
    </Function>
    <Function>
       <ID>value...f2071638018h-1304393832.1_3</ID>
+      <Type>FUC_VALUE</Type>
+   </Function>
+   <Function>
+      <ID>compareEq...f2071638018h-1779724044.0_1</ID>
+      <Type>FUB_COMPARE</Type>
+   </Function>
+   <Function>
+      <ID>value...f2071638018h-1779724044.1_3</ID>
       <Type>FUC_VALUE</Type>
    </Function>
    <Function>
@@ -138,14 +162,6 @@
    </Function>
    <Function>
       <ID>value...urn:Base_Components.Basic_Behavior.XML.XMLComposeOptions.encoding</ID>
-      <Type>FUC_VALUE</Type>
-   </Function>
-   <Function>
-      <ID>value...getCompositeVersion</ID>
-      <Type>FUC_VALUE</Type>
-   </Function>
-   <Function>
-      <ID>value...getCompositeCategory</ID>
       <Type>FUC_VALUE</Type>
    </Function>
 </Functions>

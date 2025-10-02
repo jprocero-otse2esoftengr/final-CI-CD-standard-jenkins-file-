@@ -2,7 +2,7 @@
 <project>
    <generic>
       <author type="java.lang.String">jprocero</author>
-      <name type="java.lang.String">CI-CD-DELIVERY-master</name>
+      <name type="java.lang.String">final-CI-CD-standard-jenkins-file-</name>
       <description type="java.lang.String"/>
       <repository type="java.io.File">repository</repository>
    </generic>

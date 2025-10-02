@@ -53,6 +53,9 @@
    <DataItem id="omsg2071638018h-981329032">
       <Record name="response" type="urn:Services.NameOfService1.Classes.outputClass"/>
    </DataItem>
+   <DataItem id="omsg2071638018h1185220296">
+      <Record name="response" type="urn:Services.NameOfService1.Classes.outputClass"/>
+   </DataItem>
    <DataItem id="imsg2071638018h-576952005">
       <Record name="request" type="urn:Services.NameOfService1.Classes.inputClass"/>
    </DataItem>
@@ -116,6 +119,30 @@
    <DataItem id="FO_value...f2071638018h1625116305.3_1">
       <Boolean name="value...f2071638018h1625116305.3_1Return"/>
    </DataItem>
+   <DataItem id="sm2071638018h1185220296_0">
+      <Record name="response" type="urn:Services.NameOfService1.Classes.outputClass"/>
+   </DataItem>
+   <DataItem id="sm2071638018h1185220296_1">
+      <String name="response.status...value...f2071638018h2039715482.1_1"/>
+   </DataItem>
+   <DataItem id="sm2071638018h1185220296_2">
+      <String name="response.message...value...f2071638018h2039715482.2_1"/>
+   </DataItem>
+   <DataItem id="sm2071638018h1185220296_3">
+      <Boolean name="response.blockedReached...value...f2071638018h2039715482.3_1"/>
+   </DataItem>
+   <DataItem id="FI_value...f2071638018h2039715482.1_1"/>
+   <DataItem id="FO_value...f2071638018h2039715482.1_1">
+      <String name="value...f2071638018h2039715482.1_1Return"/>
+   </DataItem>
+   <DataItem id="FI_value...f2071638018h2039715482.2_1"/>
+   <DataItem id="FO_value...f2071638018h2039715482.2_1">
+      <String name="value...f2071638018h2039715482.2_1Return"/>
+   </DataItem>
+   <DataItem id="FI_value...f2071638018h2039715482.3_1"/>
+   <DataItem id="FO_value...f2071638018h2039715482.3_1">
+      <Boolean name="value...f2071638018h2039715482.3_1Return"/>
+   </DataItem>
    <DataItem id="sm2071638018h-576952005_0">
       <Record name="response" type="urn:Services.NameOfService1.Classes.outputClass"/>
    </DataItem>
@@ -149,6 +176,17 @@
    <DataItem id="FI_value...f2071638018h-1304393832.1_3"/>
    <DataItem id="FO_value...f2071638018h-1304393832.1_3">
       <String name="value...f2071638018h-1304393832.1_3Return"/>
+   </DataItem>
+   <DataItem id="FI_compareEq...f2071638018h-1779724044.0_1">
+      <String name="request.position"/>
+      <String name="value...f2071638018h-1779724044.1_3"/>
+   </DataItem>
+   <DataItem id="FO_compareEq...f2071638018h-1779724044.0_1">
+      <Boolean name="compareEq...f2071638018h-1779724044.0_1Return"/>
+   </DataItem>
+   <DataItem id="FI_value...f2071638018h-1779724044.1_3"/>
+   <DataItem id="FO_value...f2071638018h-1779724044.1_3">
+      <String name="value...f2071638018h-1779724044.1_3Return"/>
    </DataItem>
    <DataItem id="urn:Base_Components.Add_Ons.HTTP.HeaderField" name="HeaderField">
       <String name="name"/>
